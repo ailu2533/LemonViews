@@ -25,13 +25,13 @@ struct CapsuleButtonStyle: ButtonStyle {
 }
 
 // 单个标签值按钮视图
-struct CapsuleButton: View {
-    let title: String
-    let isSelected: Bool
-    let tagColor: Color
-    let action: () -> Void
+public struct CapsuleButton: View {
+    public let title: String
+    public let isSelected: Bool
+    public let tagColor: Color
+    public let action: () -> Void
 
-    var body: some View {
+    public var body: some View {
         Button(action: action) {
             Text(title)
         }
