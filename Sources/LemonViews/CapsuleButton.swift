@@ -41,6 +41,7 @@ public struct CapsuleButton: View {
     public var body: some View {
         Button(action: action) {
             Text(title)
+                .frame(minWidth: 20)
         }
         .buttonStyle(CapsuleButtonStyle(isSelected: isSelected, tagColor: tagColor))
     }
@@ -57,6 +58,13 @@ public struct CapsuleButton: View {
         )
         CapsuleButton(
             title: "测试",  // 使用模拟数据
+            isSelected: true,
+            tagColor: .blue.opacity(0.4),
+            action: {}
+        )
+        
+        CapsuleButton(
+            title: "M",  // 使用模拟数据
             isSelected: true,
             tagColor: .blue.opacity(0.4),
             action: {}
