@@ -47,24 +47,47 @@ public struct CapsuleButton: View {
     }
 }
 
+// 单个标签值按钮视图
+public struct CapsuleButton2<Content: View>: View {
+//    let title: String
+    let isSelected: Bool
+    let tagColor: Color
+    let action: () -> Void
+    let content: () -> Content
+
+    init(isSelected: Bool, tagColor: Color, action: @escaping () -> Void, content: @escaping () -> Content) {
+        self.isSelected = isSelected
+        self.tagColor = tagColor
+        self.action = action
+        self.content = content
+    }
+
+    public var body: some View {
+        Button(action: action) {
+            content()
+        }
+        .buttonStyle(CapsuleButtonStyle(isSelected: isSelected, tagColor: tagColor))
+    }
+}
+
 // 预览提供器
 #Preview {
     VStack {
         CapsuleButton(
-            title: "测试",  // 使用模拟数据
+            title: "测试", // 使用模拟数据
             isSelected: false,
             tagColor: .blue,
             action: {}
         )
         CapsuleButton(
-            title: "测试",  // 使用模拟数据
+            title: "测试", // 使用模拟数据
             isSelected: true,
             tagColor: .blue.opacity(0.4),
             action: {}
         )
-        
+
         CapsuleButton(
-            title: "M",  // 使用模拟数据
+            title: "M", // 使用模拟数据
             isSelected: true,
             tagColor: .blue.opacity(0.4),
             action: {}
