@@ -55,7 +55,7 @@ public struct CapsuleButton2<Content: View>: View {
     let action: () -> Void
     let content: () -> Content
 
-    init(isSelected: Bool, tagColor: Color, action: @escaping () -> Void, content: @escaping () -> Content) {
+    public init(isSelected: Bool, tagColor: Color, action: @escaping () -> Void, content: @escaping () -> Content) {
         self.isSelected = isSelected
         self.tagColor = tagColor
         self.action = action
