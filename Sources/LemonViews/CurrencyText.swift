@@ -23,3 +23,6 @@ public struct CurrencyText: View {
 #Preview {
     CurrencyText(value: 12.345)
 }
+
+
+
