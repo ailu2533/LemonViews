@@ -32,8 +32,8 @@ public struct SeasonSheetView: View {
                 SeasonRow(season: season, isSelected: isSeasonSelected(season.bitmask)) {
                     selectedSeason.toggleBit(season.bitmask)
                 }
+                .listRowSeparator(.hidden)
             }
-            .listRowSeparator(.hidden)
             .navigationTitle("季节")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {

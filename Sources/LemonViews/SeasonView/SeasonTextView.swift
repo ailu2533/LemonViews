@@ -7,10 +7,14 @@
 
 import SwiftUI
 
-struct SeasonTextView: View {
+public struct SeasonTextView: View {
     var season: Int
 
-    var body: some View {
+    public init(season: Int) {
+        self.season = season
+    }
+
+    public var body: some View {
         if season == 0 || season == 15 {
             seasonTag("四季", color: .purple)
         } else {
@@ -43,11 +47,11 @@ struct SeasonTextView: View {
     }
 }
 
-//#Preview {
+// #Preview {
 //    VStack(spacing: 10) {
 //        SeasonTextView(season: 15)
 //        SeasonTextView(season: 7)
 //        SeasonTextView(season: 3)
 //        SeasonTextView(season: 8)
 //    }
-//}
+// }

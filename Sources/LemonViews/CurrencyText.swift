@@ -17,6 +17,8 @@ public struct CurrencyText: View {
     public var body: some View {
         let decimalValue = Decimal(value)
         Text(decimalValue, format: .currency(code: "CNY").precision(.fractionLength(2)))
+            .font(.subheadline)
+            .foregroundStyle(.secondary)
     }
 }
 
