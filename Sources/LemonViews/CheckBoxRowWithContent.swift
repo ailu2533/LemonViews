@@ -13,6 +13,12 @@ public struct CheckBoxRowWithContent<Content: View>: View {
     public let content: () -> Content
     public let callback: () -> Void
 
+    public init(isChecked: Bool, @ViewBuilder content: @escaping () -> Content, callback: @escaping () -> Void) {
+        self.isChecked = isChecked
+        self.content = content
+        self.callback = callback
+    }
+
     public var body: some View {
         Button {
             callback()
