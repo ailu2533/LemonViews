@@ -7,23 +7,19 @@
 
 import SwiftUI
 
-public struct CheckBoxRow: View {
-    let title: String
-    let isChecked: Bool
-    let callback: () -> Void
-
-    public init(title: String, isChecked: Bool, callback: @escaping () -> Void) {
-        self.title = title
-        self.isChecked = isChecked
-        self.callback = callback
-    }
+public struct CheckBoxRowWithContent<Content: View>: View {
+    public let isChecked: Bool
+    @ViewBuilder
+    public let content: () -> Content
+    public let callback: () -> Void
 
     public var body: some View {
         Button {
             callback()
         } label: {
             HStack {
-                Text(title)
+                content()
+
                 Spacer()
                 Image(systemName: isChecked ?
                     "checkmark.square.fill" : "square")
@@ -37,14 +33,9 @@ public struct CheckBoxRow: View {
     }
 }
 
-
-
 #Preview {
-    List {
-        CheckBoxRow(title: "test", isChecked: true) {
-        }
-
-        CheckBoxRow(title: "test", isChecked: false) {
-        }
+    CheckBoxRowWithContent(isChecked: true) {
+        Text("test")
+    } callback: {
     }
 }
