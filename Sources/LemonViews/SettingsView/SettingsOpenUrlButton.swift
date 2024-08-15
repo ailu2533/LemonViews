@@ -8,13 +8,13 @@
 import SwiftUI
 
 public struct SettingsOpenUrlButton: View {
-    private let title: String
+    private let title: LocalizedStringKey
     private let icon: String
     private let iconBackground: Color
     private let urlString: String
     @Environment(\.openURL) private var openURL
 
-    public init(title: String, icon: String, iconBackground: Color = .blue, urlString: String) {
+    public init(title: LocalizedStringKey, icon: String, iconBackground: Color = .blue, urlString: String) {
         self.title = title
         self.icon = icon
         self.iconBackground = iconBackground
