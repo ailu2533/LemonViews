@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct SettingToggle: View {
+public struct SettingToggle: View {
     @Binding var isOn: Bool
 
     let icon: String
@@ -18,7 +18,16 @@ struct SettingToggle: View {
     let title: String
     let description: String?
 
-    var body: some View {
+    public init(isOn: Binding<Bool>, icon: String, foregroundColor: Color, backgroundColor: Color, title: String, description: String?) {
+        _isOn = isOn
+        self.icon = icon
+        self.foregroundColor = foregroundColor
+        self.backgroundColor = backgroundColor
+        self.title = title
+        self.description = description
+    }
+
+    public var body: some View {
         HStack {
             SettingIconView(icon: .system(icon: icon, foregroundColor: foregroundColor, backgroundColor: backgroundColor))
 

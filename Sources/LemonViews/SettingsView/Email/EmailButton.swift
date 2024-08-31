@@ -8,22 +8,33 @@
 import Foundation
 import SwiftUI
 
-struct EmailButton: View {
-    @Environment(\.openURL) var openURL
-    let emailAddress = "im.ailu@outlook.com"
+public struct EmailButton: View {
+    @Environment(\.openURL) private var openURL
+    private let emailAddress: String
+    let foregroundColor: Color
     let backgroundColor: Color
 
-    var body: some View {
+    public init(emailAddress: String = "im.ailu@outlook.com", foregroundColor: Color, backgroundColor: Color) {
+        self.foregroundColor = foregroundColor
+        self.backgroundColor = backgroundColor
+        self.emailAddress = emailAddress
+    }
+
+    public var body: some View {
         Button(action: {
             let subject = "Support email from app user"
             let email = SupportEmail(toAddress: emailAddress, subject: subject)
             email.send(openURL: openURL)
         }, label: {
             HStack {
-                SettingIconView(icon: .system(icon: "mail", foregroundColor: .white, backgroundColor: backgroundColor))
+                SettingIconView(icon: .system(icon: "mail", foregroundColor: foregroundColor, backgroundColor: backgroundColor))
 
                 Text("邮箱 \(emailAddress)")
             }
         })
     }
+}
+
+#Preview {
+    EmailButton(emailAddress: "example@example.com", foregroundColor: .white, backgroundColor: .blue)
 }
