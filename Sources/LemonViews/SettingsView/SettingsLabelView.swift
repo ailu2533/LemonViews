@@ -10,25 +10,20 @@ import SwiftUI
 public struct SettingsLabelView: View {
     let systemName: String
     let text: LocalizedStringKey
+    let foregroundColor: Color
     let backgroundColor: Color
 
-    public init(systemName: String, text: LocalizedStringKey, backgroundColor: Color) {
+    public init(systemName: String, text: LocalizedStringKey, foregroundColor: Color = .white, backgroundColor: Color) {
         self.systemName = systemName
         self.text = text
+        self.foregroundColor = foregroundColor
         self.backgroundColor = backgroundColor
     }
 
     public var body: some View {
         HStack {
-//            Image(systemName: systemName)
-//                .font(.system(.body, design: .rounded))
-//                .foregroundColor(.white)
-//                .frame(width: 30, height: 30)
-//                .background(backgroundColor)
-//                .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
-            
-            SettingIconView(icon: .system(icon: systemName, foregroundColor: .white, backgroundColor: backgroundColor))
-            
+            SettingIconView(icon: .system(icon: systemName, foregroundColor: foregroundColor, backgroundColor: backgroundColor))
+
             Text(text)
                 .padding(.leading, 5)
         }
