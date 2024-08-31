@@ -36,6 +36,7 @@ public struct EmailButton: View {
                 SettingIconView(icon: .system(icon: "arrowshape.turn.up.right.fill", foregroundColor: .gray, backgroundColor: .clear))
             }
         })
+        .buttonStyle(PlainButtonStyle())
     }
 }
 
