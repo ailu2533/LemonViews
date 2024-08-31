@@ -20,12 +20,15 @@ public struct SettingsLabelView: View {
 
     public var body: some View {
         HStack {
-            Image(systemName: systemName)
-                .font(.system(.body, design: .rounded))
-                .foregroundColor(.white)
-                .frame(width: 30, height: 30)
-                .background(backgroundColor)
-                .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+//            Image(systemName: systemName)
+//                .font(.system(.body, design: .rounded))
+//                .foregroundColor(.white)
+//                .frame(width: 30, height: 30)
+//                .background(backgroundColor)
+//                .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+            
+            SettingIconView(icon: .system(icon: systemName, foregroundColor: .white, backgroundColor: backgroundColor))
+            
             Text(text)
                 .padding(.leading, 5)
         }

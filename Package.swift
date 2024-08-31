@@ -5,15 +5,15 @@ import PackageDescription
 
 let package = Package(
     name: "LemonViews",
-    platforms: [ .iOS(.v16)],
+    platforms: [ .iOS(.v17)],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
             name: "LemonViews",
-            targets: ["LemonViews"]),
+            targets: ["LemonViews"])
     ],
     dependencies: [
-        .package(url: "https://github.com/SwiftUIX/SwiftUIX", .upToNextMajor(from: "0.2.2")),
+        .package(url: "https://github.com/SwiftUIX/SwiftUIX", .upToNextMajor(from: "0.2.2"))
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
@@ -21,9 +21,9 @@ let package = Package(
         .target(
             name: "LemonViews",
             dependencies: [
-                .product(name: "SwiftUIX", package: "SwiftUIX"),
+                .product(name: "SwiftUIX", package: "SwiftUIX")
             ]
-        ),
+        )
 //        .testTarget(
 //            name: "LemonViewsTests",
 //            dependencies: ["LemonViews"]

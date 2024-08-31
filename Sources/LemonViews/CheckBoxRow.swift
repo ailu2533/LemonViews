@@ -37,8 +37,6 @@ public struct CheckBoxRow: View {
     }
 }
 
-
-
 #Preview {
     List {
         CheckBoxRow(title: "test", isChecked: true) {

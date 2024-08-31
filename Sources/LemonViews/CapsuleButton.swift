@@ -31,8 +31,6 @@ public struct CapsuleButtonStyle: ButtonStyle {
     }
 }
 
-
-
 // 自定义胶囊按钮样式
 public struct CapsuleButtonStyle2: ButtonStyle {
     let isSelected: Bool
@@ -58,7 +56,6 @@ public struct CapsuleButtonStyle2: ButtonStyle {
 
     }
 }
-
 
 // 单个标签值按钮视图
 public struct CapsuleButton: View {

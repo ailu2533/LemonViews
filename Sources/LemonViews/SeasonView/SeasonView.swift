@@ -29,7 +29,7 @@ public struct Season: Identifiable, Hashable, Sendable {
         Season(symbolName: "leaf.fill", name: "春", bitmask: 1, color: .green),
         Season(symbolName: "sun.max.fill", name: "夏", bitmask: 2, color: .yellow),
         Season(symbolName: "leaf.fill", name: "秋", bitmask: 4, color: .orange),
-        Season(symbolName: "snowflake", name: "冬", bitmask: 8, color: .blue),
+        Season(symbolName: "snowflake", name: "冬", bitmask: 8, color: .blue)
     ]
 
     public static let allSeasons = [
@@ -37,7 +37,7 @@ public struct Season: Identifiable, Hashable, Sendable {
         Season(symbolName: "sun.max.fill", name: "夏", bitmask: 2, color: .yellow),
         Season(symbolName: "leaf.fill", name: "秋", bitmask: 4, color: .orange),
         Season(symbolName: "snowflake", name: "冬", bitmask: 8, color: .blue),
-        Season(symbolName: "circle.grid.2x2.fill", name: "四季", bitmask: 15, color: .purple),
+        Season(symbolName: "circle.grid.2x2.fill", name: "四季", bitmask: 15, color: .purple)
     ]
 }
 

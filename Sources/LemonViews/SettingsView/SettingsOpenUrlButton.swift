@@ -23,12 +23,15 @@ public struct SettingsOpenUrlButton: View {
 
     public var body: some View {
         HStack {
-            Image(systemName: icon)
-                .font(.system(.body, design: .rounded))
-                .foregroundColor(.white)
-                .frame(width: 30, height: 30)
-                .background(iconBackground)
-                .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+//            Image(systemName: icon)
+//                .font(.system(.body, design: .rounded))
+//                .foregroundColor(.white)
+//                .frame(width: 30, height: 30)
+//                .background(iconBackground)
+//                .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+
+            SettingIconView(icon: .system(icon: icon, foregroundColor: .white, backgroundColor: iconBackground))
+
             Button(title) {
                 if let url = URL(string: urlString) {
                     openURL(url)
