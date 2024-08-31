@@ -13,13 +13,16 @@ public struct SettingsOpenUrlButton: View {
     private let foregroundColor: Color
     private let backgroundColor: Color
     private let urlString: String
+
+    private let textColor: Color
     @Environment(\.openURL) private var openURL
 
-    public init(title: LocalizedStringKey, icon: String, foregroundColor: Color, backgroundColor: Color = .blue, urlString: String) {
+    public init(title: LocalizedStringKey, icon: String, foregroundColor: Color, backgroundColor: Color = .blue, textColor: Color = .black, urlString: String) {
         self.title = title
         self.icon = icon
         self.foregroundColor = foregroundColor
         self.backgroundColor = backgroundColor
+        self.textColor = textColor
         self.urlString = urlString
     }
 
@@ -32,8 +35,10 @@ public struct SettingsOpenUrlButton: View {
                     openURL(url)
                 }
             }
+            .foregroundStyle(textColor)
             Spacer()
-            SettingIconView(icon: .system(icon: "arrowshape.turn.up.right.fill", foregroundColor: .gray, backgroundColor: .clear))        }
+            SettingIconView(icon: .system(icon: "arrowshape.turn.up.right.fill", foregroundColor: .gray, backgroundColor: .clear))
+        }
     }
 }
 
