@@ -29,10 +29,13 @@ public struct EmailButton: View {
             HStack {
                 SettingIconView(icon: .system(icon: "mail", foregroundColor: foregroundColor, backgroundColor: backgroundColor))
 
-                Text("邮箱 \(emailAddress)")
-                
+                HStack {
+                    Text("邮箱")
+                    Text(verbatim: emailAddress)
+                }
+
                 Spacer()
-                
+
                 SettingIconView(icon: .system(icon: "arrowshape.turn.up.right.fill", foregroundColor: .gray, backgroundColor: .clear))
             }
         })
