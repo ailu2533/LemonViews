@@ -31,10 +31,7 @@ public struct EmailButton: View {
             HStack {
                 SettingIconView(icon: .system(icon: "mail", foregroundColor: foregroundColor, backgroundColor: backgroundColor))
 
-                HStack {
-                    Text(title)
-                    Text(verbatim: emailAddress)
-                }
+                Text(verbatim: emailAddress)
 
                 Spacer()
 
