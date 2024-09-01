@@ -11,10 +11,12 @@ import SwiftUI
 public struct EmailButton: View {
     @Environment(\.openURL) private var openURL
     private let emailAddress: String
+    let title: LocalizedStringKey
     let foregroundColor: Color
     let backgroundColor: Color
 
-    public init(emailAddress: String = "im.ailu@outlook.com", foregroundColor: Color, backgroundColor: Color) {
+    public init(title: LocalizedStringKey, emailAddress: String = "im.ailu@outlook.com", foregroundColor: Color, backgroundColor: Color) {
+        self.title = title
         self.foregroundColor = foregroundColor
         self.backgroundColor = backgroundColor
         self.emailAddress = emailAddress
@@ -30,7 +32,7 @@ public struct EmailButton: View {
                 SettingIconView(icon: .system(icon: "mail", foregroundColor: foregroundColor, backgroundColor: backgroundColor))
 
                 HStack {
-                    Text("邮箱")
+                    Text(title)
                     Text(verbatim: emailAddress)
                 }
 
@@ -44,5 +46,5 @@ public struct EmailButton: View {
 }
 
 #Preview {
-    EmailButton(emailAddress: "example@example.com", foregroundColor: .white, backgroundColor: .blue)
+    EmailButton(title: "邮箱", emailAddress: "example@example.com", foregroundColor: .white, backgroundColor: .blue)
 }
