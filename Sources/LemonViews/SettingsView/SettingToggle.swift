@@ -15,10 +15,10 @@ public struct SettingToggle: View {
     let foregroundColor: Color
     let backgroundColor: Color
 
-    let title: String
-    let description: String?
+    let title: LocalizedStringKey
+    let description: LocalizedStringKey?
 
-    public init(isOn: Binding<Bool>, icon: String, foregroundColor: Color, backgroundColor: Color, title: String, description: String?) {
+    public init(isOn: Binding<Bool>, icon: String, foregroundColor: Color, backgroundColor: Color, title: LocalizedStringKey, description: LocalizedStringKey?) {
         _isOn = isOn
         self.icon = icon
         self.foregroundColor = foregroundColor
