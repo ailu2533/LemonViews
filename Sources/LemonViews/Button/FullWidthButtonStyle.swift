@@ -7,15 +7,29 @@
 
 import SwiftUI
 
-struct FullWidthButtonStyle: ButtonStyle {
-    var backgroundColor: Color = .accentColor
-    var foregroundColor: Color = .white
-    var cornerRadius: CGFloat = 12
-    var verticalPadding: CGFloat = 8
-    var pressedOpacity: Double = 0.8
-    var pressedSaturation: Double = 0.8
+public struct FullWidthButtonStyle: ButtonStyle {
+    var backgroundColor: Color
+    var foregroundColor: Color
+    var cornerRadius: CGFloat
+    var verticalPadding: CGFloat
+    var pressedOpacity: Double
+    var pressedSaturation: Double
 
-    func makeBody(configuration: Configuration) -> some View {
+    public init(backgroundColor: Color = .accentColor,
+                foregroundColor: Color = .white,
+                cornerRadius: CGFloat = 12,
+                verticalPadding: CGFloat = 8,
+                pressedOpacity: Double = 0.8,
+                pressedSaturation: Double = 0.8) {
+        self.backgroundColor = backgroundColor
+        self.foregroundColor = foregroundColor
+        self.cornerRadius = cornerRadius
+        self.verticalPadding = verticalPadding
+        self.pressedOpacity = pressedOpacity
+        self.pressedSaturation = pressedSaturation
+    }
+
+    public func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .maxWidth(.infinity)
             .padding(.vertical, verticalPadding)
