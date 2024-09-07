@@ -37,10 +37,6 @@ public struct SettingsRowView: View {
         List {
             SettingsRowView(icon: "cabinet", text: "衣橱", color: .yellow) {
             }
-            NavigationLink {
-            } label: {
-                Text("Test")
-            }
         }
     }
 }
