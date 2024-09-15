@@ -18,7 +18,7 @@ public struct FullWidthButtonStyle: ButtonStyle {
     public init(backgroundColor: Color = .accentColor,
                 foregroundColor: Color = .white,
                 cornerRadius: CGFloat = 12,
-                verticalPadding: CGFloat = 8,
+                verticalPadding: CGFloat = 10,
                 pressedOpacity: Double = 0.8,
                 pressedSaturation: Double = 0.8) {
         self.backgroundColor = backgroundColor
