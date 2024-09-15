@@ -26,6 +26,7 @@ public struct SettingsLabelView: View {
 
             Text(text)
                 .padding(.leading, 5)
+                .foregroundStyle(Color(.netureBlack))
         }
     }
 }
