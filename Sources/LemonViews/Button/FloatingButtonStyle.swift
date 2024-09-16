@@ -24,6 +24,9 @@ public struct FloatingButtonStyle: ButtonStyle {
         static let pressedOpacity: Double = 0.8
     }
 
+    public init() {
+    }
+
     public func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .font(.system(size: Constants.fontSize, weight: .semibold, design: .rounded))
