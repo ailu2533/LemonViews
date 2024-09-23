@@ -50,7 +50,7 @@ public struct FormTitleView: View {
                 .focused($isFocused)
         }
         .padding(.vertical, 8)
-        .background(Color(.white))
+        .background(Color(.systemBackground))
         .clipShape(RoundedRectangle(cornerRadius: 12))
 
         .listRowInsets(EdgeInsets())

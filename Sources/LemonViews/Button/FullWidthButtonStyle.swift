@@ -18,7 +18,7 @@ public struct FullWidthButtonStyle: ButtonStyle {
     public init(backgroundColor: Color = .accentColor,
                 foregroundColor: Color = .white,
                 cornerRadius: CGFloat = 12,
-                verticalPadding: CGFloat = 12,
+                verticalPadding: CGFloat = 14,
                 pressedOpacity: Double = 0.8,
                 pressedSaturation: Double = 0.8) {
         self.backgroundColor = backgroundColor
@@ -31,6 +31,7 @@ public struct FullWidthButtonStyle: ButtonStyle {
 
     public func makeBody(configuration: Configuration) -> some View {
         configuration.label
+            .fontWeight(.semibold)
             .maxWidth(.infinity)
             .padding(.vertical, verticalPadding)
             .contentShape(Rectangle())
