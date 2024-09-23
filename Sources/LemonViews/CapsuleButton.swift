@@ -76,7 +76,7 @@ public struct CapsuleButton: View {
             Text(title)
                 .frame(minWidth: 20)
         }
-        .buttonStyle(CapsuleButtonStyle(isSelected: isSelected, textColor: Color(.textBlack), tagColor: tagColor))
+        .buttonStyle(CapsuleButtonStyle(isSelected: isSelected, textColor: .primary, tagColor: tagColor))
     }
 }
 
@@ -99,7 +99,7 @@ public struct CapsuleButton2<Content: View>: View {
         Button(action: action) {
             content()
         }
-        .buttonStyle(CapsuleButtonStyle(isSelected: isSelected, textColor: Color(.textBlack), tagColor: tagColor))
+        .buttonStyle(CapsuleButtonStyle(isSelected: isSelected, textColor: .primary, tagColor: tagColor))
     }
 }
 
