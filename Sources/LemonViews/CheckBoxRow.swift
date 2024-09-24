@@ -29,7 +29,7 @@ public struct CheckBoxRow: View {
                     "checkmark.square.fill" : "square")
                     .imageScale(.large)
                     .fontWeight(.bold)
-                    .foregroundStyle(.cyan)
+                    .foregroundStyle(Color.accentColor)
             }
             .contentShape(Rectangle())
         }
