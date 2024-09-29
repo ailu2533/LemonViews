@@ -8,14 +8,16 @@
 import SwiftUI
 
 public struct CheckBoxRow: View {
+    let systemName: String?
     let title: String
     let isChecked: Bool
     let callback: () -> Void
 
-    public init(title: String, isChecked: Bool, callback: @escaping () -> Void) {
+    public init(systemName: String? = nil, title: String, isChecked: Bool, callback: @escaping () -> Void) {
         self.title = title
         self.isChecked = isChecked
         self.callback = callback
+        self.systemName = systemName
     }
 
     public var body: some View {
@@ -23,6 +25,10 @@ public struct CheckBoxRow: View {
             callback()
         } label: {
             HStack {
+                if let systemName {
+                    SettingIconView(icon: .system(icon: systemName, foregroundColor: .primary, backgroundColor: Color(.systemGray5)))
+                }
+
                 Text(title)
                 Spacer()
                 Image(systemName: isChecked ?
