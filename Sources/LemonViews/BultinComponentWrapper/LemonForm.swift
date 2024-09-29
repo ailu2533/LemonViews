@@ -33,11 +33,13 @@ public struct LemonForm<Content: View>: View {
 public struct FormTitleView: View {
     let title: LocalizedStringKey
     @Binding var text: String
+    let initialFocusState: Bool?
     @FocusState private var isFocused
 
-    public init(title: LocalizedStringKey, text: Binding<String>) {
+    public init(title: LocalizedStringKey, text: Binding<String>, initialFocusState: Bool? = nil) {
         self.title = title
         _text = text
+        self.initialFocusState = initialFocusState
     }
 
     public var body: some View {
@@ -56,6 +58,11 @@ public struct FormTitleView: View {
         .listRowInsets(EdgeInsets())
         .listRowBackground(Color.clear)
         .onAppearOnce {
+            if let initialFocusState {
+                isFocused = initialFocusState
+                return
+            }
+
             if text.isEmpty {
                 isFocused = true
             }
