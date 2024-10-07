@@ -89,7 +89,7 @@ public struct FormIconView: View {
         Image(systemName: systemName)
             .resizable()
             .renderingMode(.template)
-            .foregroundColor(Color(.netureBlack))
+//            .foregroundColor(Color(.netureBlack))
             .aspectRatio(contentMode: .fit)
             .frame(width: size, height: size)
     }

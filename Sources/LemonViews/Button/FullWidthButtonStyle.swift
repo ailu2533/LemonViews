@@ -32,15 +32,14 @@ public struct FullWidthButtonStyle: ButtonStyle {
     public func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .fontWeight(.semibold)
-            .maxWidth(.infinity)
+            .frame(maxWidth: .infinity)
             .padding(.vertical, verticalPadding)
-            .contentShape(Rectangle())
-            .background(
-                backgroundColor
-            )
-            .saturation(configuration.isPressed ? pressedSaturation : 1)
-            .foregroundStyle(foregroundColor)
+            .background(backgroundColor)
+            .foregroundColor(configuration.role == .destructive ? .red : foregroundColor)
             .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
+            .contentShape(Rectangle())
+            .opacity(configuration.isPressed ? pressedOpacity : 1)
+            .saturation(configuration.isPressed ? pressedSaturation : 1)
             .scaleEffect(configuration.isPressed ? 0.98 : 1)
             .animation(.easeInOut(duration: 0.2), value: configuration.isPressed)
     }
@@ -57,6 +56,12 @@ public struct FullWidthButtonStyle: ButtonStyle {
             Text("Button")
         })
         .buttonStyle(FullWidthButtonStyle())
+        .padding(.horizontal, 16)
+
+        Button(role: .destructive, action: {}, label: {
+            Text("Button")
+        })
+        .buttonStyle(FullWidthButtonStyle(backgroundColor:.orange))
         .padding(.horizontal, 16)
     }
 }
