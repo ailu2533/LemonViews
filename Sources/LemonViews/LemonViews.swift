@@ -114,7 +114,7 @@ public struct DateRange: Identifiable, Sendable {
 public struct PriceRange: Identifiable, Sendable {
     // MARK: Lifecycle
 
-    public init(min: Double, max: Double?) {
+    public init(min: Int, max: Int?) {
         self.min = min
         self.max = max
     }
@@ -132,8 +132,8 @@ public struct PriceRange: Identifiable, Sendable {
     ]
 
     public let id = UUID()
-    public let min: Double
-    public let max: Double?
+    public let min: Int
+    public let max: Int?
 
     public var description: LocalizedStringKey {
         if let max = max {
