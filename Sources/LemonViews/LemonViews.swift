@@ -90,11 +90,11 @@ public struct DateRange: Identifiable, Sendable {
     public var description: LocalizedStringKey {
         switch unit {
         case .day:
-            return "最近一周"
+            return "最近1周"
         case .month:
-            return duration == 1 ? "最近一个月" : "最近\(duration)个月"
+            return duration == 1 ? "最近1个月" : "最近\(duration)个月"
         case .year:
-            return "最近一年"
+            return "最近1年"
         default:
             return ""
         }
