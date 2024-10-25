@@ -4,21 +4,27 @@
 import SwiftUI
 
 public struct Stats: Sendable {
-    public let count: Int
-    public let totalPrice: Double
+    // MARK: Lifecycle
 
     public init(count: Int = 0, totalPrice: Double = 0) {
         self.count = count
         self.totalPrice = totalPrice
     }
+
+    // MARK: Public
+
+    public let count: Int
+    public let totalPrice: Double
 }
 
 public struct StatsItemView: View {
-    let stats: Stats
+    // MARK: Lifecycle
 
     public init(stats: Stats) {
         self.stats = stats
     }
+
+    // MARK: Public
 
     public var body: some View {
         VStack(alignment: .trailing, spacing: 4) {
@@ -28,6 +34,10 @@ public struct StatsItemView: View {
         }
         .padding(.vertical, 4)
     }
+
+    // MARK: Internal
+
+    let stats: Stats
 }
 
 #Preview {
@@ -35,11 +45,15 @@ public struct StatsItemView: View {
 }
 
 public struct ColorSwatch: View {
-    public let color: UIColor
+    // MARK: Lifecycle
 
     public init(color: UIColor) {
         self.color = color
     }
+
+    // MARK: Public
+
+    public let color: UIColor
 
     public var body: some View {
         Color(uiColor: color)
@@ -54,16 +68,26 @@ public struct ColorSwatch: View {
 }
 
 public struct DateRange: Identifiable, Sendable {
-    public let id = UUID()
-    let duration: Int
-    let unit: Calendar.Component
+    // MARK: Lifecycle
 
     public init(duration: Int, unit: Calendar.Component) {
         self.duration = duration
         self.unit = unit
     }
 
-    public var description: String {
+    // MARK: Public
+
+    public static let dateRanges = [
+        DateRange(duration: 7, unit: .day),
+        DateRange(duration: 1, unit: .month),
+        DateRange(duration: 3, unit: .month),
+        DateRange(duration: 6, unit: .month),
+        DateRange(duration: 1, unit: .year),
+    ]
+
+    public let id = UUID()
+
+    public var description: LocalizedStringKey {
         switch unit {
         case .day:
             return "最近一周"
@@ -81,32 +105,21 @@ public struct DateRange: Identifiable, Sendable {
         return calendar.date(byAdding: unit, value: -duration, to: Date()) ?? Date()
     }
 
-    public static let dateRanges = [
-        DateRange(duration: 7, unit: .day),
-        DateRange(duration: 1, unit: .month),
-        DateRange(duration: 3, unit: .month),
-        DateRange(duration: 6, unit: .month),
-        DateRange(duration: 1, unit: .year)
-    ]
+    // MARK: Internal
+
+    let duration: Int
+    let unit: Calendar.Component
 }
 
 public struct PriceRange: Identifiable, Sendable {
-    public let id = UUID()
-    public let min: Double
-    public let max: Double?
+    // MARK: Lifecycle
 
     public init(min: Double, max: Double?) {
         self.min = min
         self.max = max
     }
 
-    public var description: String {
-        if let max = max {
-            return "\(min)元到\(max)元"
-        } else {
-            return "\(min)元以上"
-        }
-    }
+    // MARK: Public
 
     public static let priceRanges = [
         PriceRange(min: 0, max: 50),
@@ -115,6 +128,18 @@ public struct PriceRange: Identifiable, Sendable {
         PriceRange(min: 200, max: 300),
         PriceRange(min: 300, max: 500),
         PriceRange(min: 500, max: 1000),
-        PriceRange(min: 1000, max: nil)
+        PriceRange(min: 1000, max: nil),
     ]
+
+    public let id = UUID()
+    public let min: Double
+    public let max: Double?
+
+    public var description: LocalizedStringKey {
+        if let max = max {
+            return "\(min)元到\(max)元"
+        } else {
+            return "\(min)元以上"
+        }
+    }
 }
