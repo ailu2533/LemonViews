@@ -20,34 +20,22 @@
         }
       }
     },
-    "%lld元以上" : {
+    "%lld以上" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Over %lld yuan"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld元以上"
+            "value" : "Over %lld"
           }
         }
       }
     },
-    "%lld元到%lld元" : {
+    "%lld到%lld" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%1$lld to %2$lld yuan"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%1$lld元到%2$lld元"
+            "value" : "%1$lld to %2$lld"
           }
         }
       }

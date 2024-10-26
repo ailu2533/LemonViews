@@ -137,9 +137,9 @@ public struct PriceRange: Identifiable, Sendable {
 
     public var description: LocalizedStringKey {
         if let max = max {
-            return "\(min)元到\(max)元"
+            return "\(min)到\(max)"
         } else {
-            return "\(min)元以上"
+            return "\(min)以上"
         }
     }
 }
