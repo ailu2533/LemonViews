@@ -9,15 +9,15 @@ import SwiftUI
 
 // 自定义胶囊按钮样式
 public struct CapsuleButtonStyle: ButtonStyle {
-    let isSelected: Bool
-    let tagColor: Color
-    let textColor: Color
+    // MARK: Lifecycle
 
     public init(isSelected: Bool = false, textColor: Color, tagColor: Color = Color(.systemGray5)) {
         self.isSelected = isSelected
         self.tagColor = tagColor
         self.textColor = textColor
     }
+
+    // MARK: Public
 
     public func makeBody(configuration: Configuration) -> some View {
         configuration.label
@@ -29,19 +29,25 @@ public struct CapsuleButtonStyle: ButtonStyle {
             .font(.subheadline)
             .shadow(radius: 0.4)
     }
+
+    // MARK: Internal
+
+    let isSelected: Bool
+    let tagColor: Color
+    let textColor: Color
 }
 
 // 自定义胶囊按钮样式
 public struct CapsuleButtonStyle2: ButtonStyle {
-    let isSelected: Bool
-    let tagColor: Color
-    let textColor: Color
+    // MARK: Lifecycle
 
     public init(isSelected: Bool = false, textColor: Color, tagColor: Color = Color(.systemGray5)) {
         self.isSelected = isSelected
         self.tagColor = tagColor
         self.textColor = textColor
     }
+
+    // MARK: Public
 
     public func makeBody(configuration: Configuration) -> some View {
         configuration.label
@@ -53,23 +59,27 @@ public struct CapsuleButtonStyle2: ButtonStyle {
 //            .font(.subheadline)
 //            .fontWeight(.semibold)
             .shadow(radius: 0.4)
-
     }
+
+    // MARK: Internal
+
+    let isSelected: Bool
+    let tagColor: Color
+    let textColor: Color
 }
 
 // 单个标签值按钮视图
-public struct CapsuleButton: View {
-    let title: String
-    let isSelected: Bool
-    let tagColor: Color
-    let action: () -> Void
+public struct CapsuleButton<T: StringProtocol>: View {
+    // MARK: Lifecycle
 
-    public init(title: String, isSelected: Bool, tagColor: Color, action: @escaping () -> Void) {
+    public init(title: T, isSelected: Bool, tagColor: Color, action: @escaping () -> Void) {
         self.title = title
         self.isSelected = isSelected
         self.tagColor = tagColor
         self.action = action
     }
+
+    // MARK: Public
 
     public var body: some View {
         Button(action: action) {
@@ -78,15 +88,18 @@ public struct CapsuleButton: View {
         }
         .buttonStyle(CapsuleButtonStyle(isSelected: isSelected, textColor: .primary, tagColor: tagColor))
     }
+
+    // MARK: Internal
+
+    let title: T
+    let isSelected: Bool
+    let tagColor: Color
+    let action: () -> Void
 }
 
 // 单个标签值按钮视图
 public struct CapsuleButton2<Content: View>: View {
-//    let title: String
-    let isSelected: Bool
-    let tagColor: Color
-    let action: () -> Void
-    let content: () -> Content
+    // MARK: Lifecycle
 
     public init(isSelected: Bool, tagColor: Color, action: @escaping () -> Void, content: @escaping () -> Content) {
         self.isSelected = isSelected
@@ -95,12 +108,22 @@ public struct CapsuleButton2<Content: View>: View {
         self.content = content
     }
 
+    // MARK: Public
+
     public var body: some View {
         Button(action: action) {
             content()
         }
         .buttonStyle(CapsuleButtonStyle(isSelected: isSelected, textColor: .primary, tagColor: tagColor))
     }
+
+    // MARK: Internal
+
+//    let title: String
+    let isSelected: Bool
+    let tagColor: Color
+    let action: () -> Void
+    let content: () -> Content
 }
 
 // 预览提供器
@@ -129,13 +152,14 @@ public struct CapsuleButton2<Content: View>: View {
 }
 
 public struct ColorButton: View {
-    let color: Color
-    let isSelected: Bool
+    // MARK: Lifecycle
 
     public init(color: Color, isSelected: Bool) {
         self.color = color
         self.isSelected = isSelected
     }
+
+    // MARK: Public
 
     public var body: some View {
         RoundedRectangle(cornerRadius: 8)
@@ -148,4 +172,9 @@ public struct ColorButton: View {
                     .stroke(isSelected ? Color.green : Color.clear, lineWidth: 2)
             )
     }
+
+    // MARK: Internal
+
+    let color: Color
+    let isSelected: Bool
 }
