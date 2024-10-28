@@ -69,33 +69,33 @@ public struct CapsuleButtonStyle2: ButtonStyle {
 }
 
 // 单个标签值按钮视图
-public struct CapsuleButton<T: StringProtocol>: View {
-    // MARK: Lifecycle
-
-    public init(title: T, isSelected: Bool, tagColor: Color, action: @escaping () -> Void) {
-        self.title = title
-        self.isSelected = isSelected
-        self.tagColor = tagColor
-        self.action = action
-    }
-
-    // MARK: Public
-
-    public var body: some View {
-        Button(action: action) {
-            Text(title)
-                .frame(minWidth: 20)
-        }
-        .buttonStyle(CapsuleButtonStyle(isSelected: isSelected, textColor: .primary, tagColor: tagColor))
-    }
-
-    // MARK: Internal
-
-    let title: T
-    let isSelected: Bool
-    let tagColor: Color
-    let action: () -> Void
-}
+// public struct CapsuleButton<T: StringProtocol>: View {
+//    // MARK: Lifecycle
+//
+//    public init(title: T, isSelected: Bool, tagColor: Color, action: @escaping () -> Void) {
+//        self.title = title
+//        self.isSelected = isSelected
+//        self.tagColor = tagColor
+//        self.action = action
+//    }
+//
+//    // MARK: Public
+//
+//    public var body: some View {
+//        Button(action: action) {
+//            Text(title)
+//                .frame(minWidth: 20)
+//        }
+//        .buttonStyle(CapsuleButtonStyle(isSelected: isSelected, textColor: .primary, tagColor: tagColor))
+//    }
+//
+//    // MARK: Internal
+//
+//    let title: T
+//    let isSelected: Bool
+//    let tagColor: Color
+//    let action: () -> Void
+// }
 
 // 单个标签值按钮视图
 public struct CapsuleButton2<Content: View>: View {
@@ -177,4 +177,44 @@ public struct ColorButton: View {
 
     let color: Color
     let isSelected: Bool
+}
+
+public struct CapsuleButton: View {
+    // MARK: Lifecycle
+
+    // String 初始化器
+    public init<S: StringProtocol>(title: S, isSelected: Bool, tagColor: Color, action: @escaping () -> Void) {
+        self.titleView = Text(title)
+        self.isSelected = isSelected
+        self.tagColor = tagColor
+        self.action = action
+    }
+
+    // LocalizedStringKey 初始化器
+    public init(title: LocalizedStringKey, isSelected: Bool, tagColor: Color, action: @escaping () -> Void) {
+        self.titleView = Text(title)
+        self.isSelected = isSelected
+        self.tagColor = tagColor
+        self.action = action
+    }
+
+    // MARK: Public
+
+    public var body: some View {
+        Button(action: action) {
+            titleView
+                .frame(minWidth: 20)
+        }
+        .buttonStyle(CapsuleButtonStyle(isSelected: isSelected, textColor: .primary, tagColor: tagColor))
+    }
+
+    // MARK: Internal
+
+    let isSelected: Bool
+    let tagColor: Color
+    let action: () -> Void
+
+    // MARK: Private
+
+    private let titleView: Text // 使用 Text 视图来处理不同类型的输入
 }
