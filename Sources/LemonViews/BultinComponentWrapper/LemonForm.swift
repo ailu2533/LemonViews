@@ -52,11 +52,11 @@ public struct FormTitleView: View {
                 .focused($isFocused)
         }
         .padding(.vertical, 8)
-        .background(Color(.systemBackground))
+//        .background(Color(.systemBackground))
         .clipShape(RoundedRectangle(cornerRadius: 12))
 
         .listRowInsets(EdgeInsets())
-        .listRowBackground(Color.clear)
+//        .listRowBackground(Color.clear)
         .onAppearOnce {
             if let initialFocusState {
                 isFocused = initialFocusState
