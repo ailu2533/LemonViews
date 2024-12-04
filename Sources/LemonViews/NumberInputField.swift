@@ -8,10 +8,12 @@
 import SwiftUI
 import UIKit
 
+// MARK: - NumberInputField
+
 public struct NumberInputField: UIViewRepresentable {
     // MARK: Lifecycle
 
-    public init(value: Binding<Int64>, placeholder: String, keyboardType: UIKeyboardType = .numberPad, textAlignment: NSTextAlignment = .center, backgroundColor: UIColor = .systemGray6, verticalPadding: CGFloat = 10) {
+    public init(value: Binding<CGFloat>, placeholder: String, keyboardType: UIKeyboardType = .numberPad, textAlignment: NSTextAlignment = .center, backgroundColor: UIColor = .systemGray6, verticalPadding: CGFloat = 10) {
         _value = value
         self.placeholder = placeholder
         self.keyboardType = keyboardType
@@ -51,7 +53,7 @@ public struct NumberInputField: UIViewRepresentable {
         }
 
         public func textFieldDidChangeSelection(_ textField: UITextField) {
-            if let text = textField.text, !text.isEmpty, let value = Int64(text) {
+            if let text = textField.text, !text.isEmpty, let value = Double(text) {
                 parent.value = value
             } else {
                 parent.value = 0
@@ -122,7 +124,7 @@ public struct NumberInputField: UIViewRepresentable {
 
     // MARK: Internal
 
-    @Binding var value: Int64
+    @Binding var value: CGFloat
     var placeholder: String
     var keyboardType: UIKeyboardType
     var textAlignment: NSTextAlignment
