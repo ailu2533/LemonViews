@@ -37,28 +37,28 @@ public struct NumberInputField: UIViewRepresentable {
             let currentText = textField.text ?? ""
             guard let stringRange = Range(range, in: currentText) else { return false }
             let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
-
-            // 只允许输入数字
-            let allowedCharacters = CharacterSet.decimalDigits
-            let characterSet = CharacterSet(charactersIn: string)
-
-            // 检查是否超过 Int64 的最大值
-            if let potentialValue = Int64(updatedText), potentialValue <= 99999 {
-                return allowedCharacters.isSuperset(of: characterSet)
-            } else if updatedText.isEmpty {
-                return true
+            
+            // 允许空字符串
+            if updatedText.isEmpty { return true }
+            
+            // 允许一个小数点
+            if string == "." {
+                return !currentText.contains(".")
             }
-
+            
+            // 允许数字和小数点
+            let allowedCharacters = CharacterSet(charactersIn: "0123456789.")
+            let characterSet = CharacterSet(charactersIn: string)
+            
+            // 验证格式和范围
+            if let potentialValue = Double(updatedText) {
+                return potentialValue <= 99999 && allowedCharacters.isSuperset(of: characterSet)
+            }
+            
             return false
         }
 
-        public func textFieldDidChangeSelection(_ textField: UITextField) {
-            if let text = textField.text, !text.isEmpty, let value = Double(text) {
-                parent.value = value
-            } else {
-                parent.value = 0
-            }
-        }
+
 
         // 新增: 文本框开始编辑时将光标移到最右边
         public func textFieldDidBeginEditing(_ textField: UITextField) {
