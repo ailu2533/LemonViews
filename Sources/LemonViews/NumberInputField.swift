@@ -52,7 +52,7 @@ public struct NumberInputField: UIViewRepresentable {
 
             // 验证格式
             if let potentialValue = Double(updatedText) {
-                return allowedCharacters.isSuperset(of: characterSet)
+                return potentialValue <= 999999 && allowedCharacters.isSuperset(of: characterSet)
             }
 
             return false
@@ -77,7 +77,7 @@ public struct NumberInputField: UIViewRepresentable {
                 if let text = textField.text, !text.isEmpty, let value = Double(text) {
                     self.parent.value = text
                 } else {
-                    self.parent.value = "0"
+                    self.parent.value = ""
                 }
             }
         }
