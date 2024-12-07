@@ -13,7 +13,7 @@ import UIKit
 public struct NumberInputField: UIViewRepresentable {
     // MARK: Lifecycle
 
-    public init(value: Binding<Double>, placeholder: String, keyboardType: UIKeyboardType = .numberPad, textAlignment: NSTextAlignment = .center, backgroundColor: UIColor = .systemGray6, verticalPadding: CGFloat = 10) {
+    public init(value: Binding<String>, placeholder: String, keyboardType: UIKeyboardType = .numberPad, textAlignment: NSTextAlignment = .center, backgroundColor: UIColor = .systemGray6, verticalPadding: CGFloat = 10) {
         _value = value
         self.placeholder = placeholder
         self.keyboardType = keyboardType
@@ -60,7 +60,7 @@ public struct NumberInputField: UIViewRepresentable {
 
         public func textFieldDidEndEditing(_ textField: UITextField) {
             if let text = textField.text, let double = Double(text) {
-                self.parent.value = double
+                self.parent.value = text
             }
         }
 
@@ -75,9 +75,9 @@ public struct NumberInputField: UIViewRepresentable {
         public func textFieldDidChangeSelection(_ textField: UITextField) {
             DispatchQueue.main.async {
                 if let text = textField.text, !text.isEmpty, let value = Double(text) {
-                    self.parent.value = value
+                    self.parent.value = text
                 } else {
-                    self.parent.value = 0
+                    self.parent.value = "0"
                 }
             }
         }
@@ -129,7 +129,7 @@ public struct NumberInputField: UIViewRepresentable {
     }
 
     public func updateUIView(_ uiView: UITextField, context: Context) {
-//        uiView.text = value
+        uiView.text = value
     }
 
     public func makeCoordinator() -> Coordinator {
@@ -138,7 +138,7 @@ public struct NumberInputField: UIViewRepresentable {
 
     // MARK: Internal
 
-    @Binding var value: Double
+    @Binding var value: String
     var placeholder: String
     var keyboardType: UIKeyboardType
     var textAlignment: NSTextAlignment
