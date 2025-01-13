@@ -9,16 +9,16 @@ import Foundation
 import SwiftUI
 
 public struct SettingToggle: View {
-    @Binding var isOn: Bool
+    // MARK: Lifecycle
 
-    let icon: String
-    let foregroundColor: Color
-    let backgroundColor: Color
-
-    let title: LocalizedStringKey
-    let description: LocalizedStringKey?
-
-    public init(isOn: Binding<Bool>, icon: String, foregroundColor: Color, backgroundColor: Color, title: LocalizedStringKey, description: LocalizedStringKey?) {
+    public init(
+        isOn: Binding<Bool>,
+        icon: String,
+        foregroundColor: Color,
+        backgroundColor: Color,
+        title: LocalizedStringKey,
+        description: LocalizedStringKey?
+    ) {
         _isOn = isOn
         self.icon = icon
         self.foregroundColor = foregroundColor
@@ -27,9 +27,17 @@ public struct SettingToggle: View {
         self.description = description
     }
 
+    // MARK: Public
+
     public var body: some View {
         HStack {
-            SettingIconView(icon: .system(icon: icon, foregroundColor: foregroundColor, backgroundColor: backgroundColor))
+            SettingIconView(
+                icon: .system(
+                    icon: icon,
+                    foregroundColor: foregroundColor,
+                    backgroundColor: backgroundColor
+                )
+            )
 
             Toggle(isOn: $isOn) {
                 VStack(alignment: .leading) {
@@ -43,4 +51,15 @@ public struct SettingToggle: View {
             }
         }
     }
+
+    // MARK: Internal
+
+    @Binding var isOn: Bool
+
+    let icon: String
+    let foregroundColor: Color
+    let backgroundColor: Color
+
+    let title: LocalizedStringKey
+    let description: LocalizedStringKey?
 }

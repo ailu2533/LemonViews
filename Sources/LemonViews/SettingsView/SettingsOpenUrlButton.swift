@@ -7,14 +7,8 @@
 
 import SwiftUI
 
-public struct SettingsOpenUrlButton: View {
-    private let title: LocalizedStringKey
-    private let icon: String
-    private let foregroundColor: Color
-    private let backgroundColor: Color
-    private let urlString: String
-
-    @Environment(\.openURL) private var openURL
+public struct SettingsOpenURLButton: View {
+    // MARK: Lifecycle
 
     public init(title: LocalizedStringKey, icon: String, foregroundColor: Color, backgroundColor: Color = .blue, urlString: String) {
         self.title = title
@@ -23,6 +17,8 @@ public struct SettingsOpenUrlButton: View {
         self.backgroundColor = backgroundColor
         self.urlString = urlString
     }
+
+    // MARK: Public
 
     public var body: some View {
         HStack {
@@ -39,10 +35,20 @@ public struct SettingsOpenUrlButton: View {
             SettingIconView(icon: .system(icon: "arrowshape.turn.up.right.fill", foregroundColor: .gray, backgroundColor: .clear))
         }
     }
+
+    // MARK: Private
+
+    private let title: LocalizedStringKey
+    private let icon: String
+    private let foregroundColor: Color
+    private let backgroundColor: Color
+    private let urlString: String
+
+    @Environment(\.openURL) private var openURL
 }
 
 #Preview {
     List {
-        SettingsOpenUrlButton(title: "给我们好评", icon: "star", foregroundColor: .white, urlString: "itms-apps://itunes.apple.com/app/id6504145207?action=write-review")
+        SettingsOpenURLButton(title: "给我们好评", icon: "star", foregroundColor: .white, urlString: "itms-apps://itunes.apple.com/app/id6504145207?action=write-review")
     }
 }

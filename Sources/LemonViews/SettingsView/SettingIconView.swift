@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// MARK: - SettingIcon
+
 public enum SettingIcon {
     case system(icon: String, foregroundColor: Color = .white, backgroundColor: Color)
 
@@ -15,15 +17,21 @@ public enum SettingIcon {
     case custom(view: AnyView)
 }
 
+// MARK: - SettingIconView
+
 /**
  A view for displaying a `SettingIcon`.
  */
 public struct SettingIconView: View {
-    public var icon: SettingIcon
+    // MARK: Lifecycle
 
     public init(icon: SettingIcon) {
         self.icon = icon
     }
+
+    // MARK: Public
+
+    public var icon: SettingIcon
 
     public var body: some View {
         switch icon {

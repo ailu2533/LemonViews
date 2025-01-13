@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// MARK: - NavigationIndicatorView
+
 struct NavigationIndicatorView: View {
     var body: some View {
         Image(systemName: "chevron.right")
@@ -16,12 +18,10 @@ struct NavigationIndicatorView: View {
     }
 }
 
+// MARK: - SettingsRowWithContentView
+
 public struct SettingsRowWithContentView<Content: View>: View {
-    let icon: String
-    let text: LocalizedStringKey
-    let color: Color
-    let action: () -> Void
-    let content: () -> Content
+    // MARK: Lifecycle
 
     public init(icon: String, text: LocalizedStringKey, color: Color, action: @escaping () -> Void, content: @escaping () -> Content) {
         self.icon = icon
@@ -30,6 +30,8 @@ public struct SettingsRowWithContentView<Content: View>: View {
         self.action = action
         self.content = content
     }
+
+    // MARK: Public
 
     public var body: some View {
         Button(action: action) {
@@ -42,6 +44,14 @@ public struct SettingsRowWithContentView<Content: View>: View {
         }
         .foregroundColor(.primary)
     }
+
+    // MARK: Internal
+
+    let icon: String
+    let text: LocalizedStringKey
+    let color: Color
+    let action: () -> Void
+    let content: () -> Content
 }
 
 #Preview {

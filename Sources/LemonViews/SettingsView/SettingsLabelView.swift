@@ -8,10 +8,7 @@
 import SwiftUI
 
 public struct SettingsLabelView: View {
-    let systemName: String
-    let text: LocalizedStringKey
-    let foregroundColor: Color
-    let backgroundColor: Color
+    // MARK: Lifecycle
 
     public init(systemName: String, text: LocalizedStringKey, foregroundColor: Color = .white, backgroundColor: Color) {
         self.systemName = systemName
@@ -19,6 +16,8 @@ public struct SettingsLabelView: View {
         self.foregroundColor = foregroundColor
         self.backgroundColor = backgroundColor
     }
+
+    // MARK: Public
 
     public var body: some View {
         HStack {
@@ -29,6 +28,13 @@ public struct SettingsLabelView: View {
                 .foregroundStyle(Color(.netureBlack))
         }
     }
+
+    // MARK: Internal
+
+    let systemName: String
+    let text: LocalizedStringKey
+    let foregroundColor: Color
+    let backgroundColor: Color
 }
 
 #Preview {

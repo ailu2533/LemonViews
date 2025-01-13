@@ -3,6 +3,8 @@
 
 import SwiftUI
 
+// MARK: - Stats
+
 public struct Stats: Sendable {
     // MARK: Lifecycle
 
@@ -16,6 +18,8 @@ public struct Stats: Sendable {
     public let count: Int
     public let totalPrice: Double
 }
+
+// MARK: - StatsItemView
 
 public struct StatsItemView: View {
     // MARK: Lifecycle
@@ -44,6 +48,8 @@ public struct StatsItemView: View {
     StatsItemView(stats: .init(count: 12, totalPrice: 12.34))
 }
 
+// MARK: - ColorSwatch
+
 public struct ColorSwatch: View {
     // MARK: Lifecycle
 
@@ -66,6 +72,8 @@ public struct ColorSwatch: View {
             .shadow(color: .gray.opacity(0.1), radius: 2, x: 0, y: 1)
     }
 }
+
+// MARK: - DateRange
 
 public struct DateRange: Identifiable, Sendable {
     // MARK: Lifecycle
@@ -110,6 +118,8 @@ public struct DateRange: Identifiable, Sendable {
     let duration: Int
     let unit: Calendar.Component
 }
+
+// MARK: - PriceRange
 
 public struct PriceRange: Identifiable, Sendable {
     // MARK: Lifecycle

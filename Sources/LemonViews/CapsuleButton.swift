@@ -8,7 +8,7 @@
 import SwiftUI
 
 // 预览提供器
- #Preview {
+#Preview {
     VStack {
         CapsuleButton(
             title: "测试", // 使用模拟数据
@@ -30,7 +30,9 @@ import SwiftUI
             action: {}
         )
     }
- }
+}
+
+// MARK: - CapsuleButton
 
 public struct CapsuleButton<Content: View>: View {
     // MARK: Lifecycle

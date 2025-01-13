@@ -7,11 +7,10 @@
 
 import SwiftUI
 
+// MARK: - SettingsRowView
+
 public struct SettingsRowView: View {
-    let icon: String
-    let text: LocalizedStringKey
-    let color: Color
-    let action: () -> Void
+    // MARK: Lifecycle
 
     public init(icon: String, text: LocalizedStringKey, color: Color, action: @escaping () -> Void) {
         self.icon = icon
@@ -19,6 +18,8 @@ public struct SettingsRowView: View {
         self.color = color
         self.action = action
     }
+
+    // MARK: Public
 
     public var body: some View {
         Button(action: action) {
@@ -30,6 +31,13 @@ public struct SettingsRowView: View {
         }
         .foregroundColor(.primary)
     }
+
+    // MARK: Internal
+
+    let icon: String
+    let text: LocalizedStringKey
+    let color: Color
+    let action: () -> Void
 }
 
 #Preview {
@@ -44,11 +52,10 @@ public struct SettingsRowView: View {
     }
 }
 
+// MARK: - SettingsRowNoImageBorderView
+
 public struct SettingsRowNoImageBorderView: View {
-    let icon: String
-    let text: LocalizedStringKey
-    let color: Color
-    let action: () -> Void
+    // MARK: Lifecycle
 
     public init(icon: String, text: LocalizedStringKey, color: Color, action: @escaping () -> Void) {
         self.icon = icon
@@ -56,6 +63,8 @@ public struct SettingsRowNoImageBorderView: View {
         self.color = color
         self.action = action
     }
+
+    // MARK: Public
 
     public var body: some View {
         Button(action: action) {
@@ -68,4 +77,11 @@ public struct SettingsRowNoImageBorderView: View {
         }
         .foregroundColor(.primary)
     }
+
+    // MARK: Internal
+
+    let icon: String
+    let text: LocalizedStringKey
+    let color: Color
+    let action: () -> Void
 }
