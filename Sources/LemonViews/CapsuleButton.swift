@@ -111,29 +111,44 @@ extension CapsuleButton where Content == Text {
 
 // MARK: - CapsuleToggleStyle
 
-struct CapsuleToggleStyle: ToggleStyle {
-    // MARK: Internal
+public struct CapsuleToggleStyle: ToggleStyle {
+    // MARK: Lifecycle
 
-    // MARK: Properties
+    public init(
+        activeColor: Color = .blue,
+        inactiveColor: Color = Color(.systemGray5),
+        activeTextColor: Color = .white,
+        inactiveTextColor: Color = .primary
+    ) {
+        self.activeColor = activeColor
+        self.inactiveColor = inactiveColor
+        self.activeTextColor = activeTextColor
+        self.inactiveTextColor = inactiveTextColor
+    }
 
-    var activeColor: Color = .blue
-    var inactiveColor: Color = Color(.systemGray5)
-    var activeTextColor: Color = .white
-    var inactiveTextColor: Color = .primary
+    // MARK: Public
 
-    func makeBody(configuration: Configuration) -> some View {
+    public func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .padding(.horizontal, 12)
-            .padding(.vertical, 6)
+            .padding(.horizontal, 10)
+            .padding(.vertical, 4)
             .background(
                 Capsule()
                     .fill(configuration.isOn ? activeColor : inactiveColor)
             )
             .foregroundColor(configuration.isOn ? activeTextColor : inactiveTextColor)
-            .font(.subheadline.weight(.medium))
             .contentShape(Capsule())
             .animation(animation, value: configuration.isOn)
     }
+
+    // MARK: Internal
+
+    // MARK: Properties
+
+    var activeColor: Color
+    var inactiveColor: Color
+    var activeTextColor: Color
+    var inactiveTextColor: Color
 
     // MARK: Private
 
@@ -145,14 +160,14 @@ struct CapsuleToggleStyle: ToggleStyle {
 // MARK: - Convenience Extensions
 
 extension CapsuleToggleStyle {
-    static let `default` = CapsuleToggleStyle()
+    public static let `default` = CapsuleToggleStyle()
 
-    static let accent = CapsuleToggleStyle(
+    public static let accent = CapsuleToggleStyle(
         activeColor: .accentColor,
         inactiveColor: Color(.systemGray6)
     )
 
-    static let destructive = CapsuleToggleStyle(
+    public static let destructive = CapsuleToggleStyle(
         activeColor: .red,
         inactiveColor: Color(.systemGray6)
     )
