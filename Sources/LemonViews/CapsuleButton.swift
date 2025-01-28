@@ -129,16 +129,22 @@ public struct CapsuleToggleStyle: ToggleStyle {
     // MARK: Public
 
     public func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .padding(.horizontal, 10)
-            .padding(.vertical, 4)
-            .background(
-                Capsule()
-                    .fill(configuration.isOn ? activeColor : inactiveColor)
-            )
-            .foregroundColor(configuration.isOn ? activeTextColor : inactiveTextColor)
-            .contentShape(Capsule())
-            .animation(animation, value: configuration.isOn)
+        Button {
+            configuration.isOn.toggle()
+        } label: {
+            configuration.label
+                .padding(.horizontal, 12)
+                .padding(.vertical, 6)
+                .background(
+                    Capsule()
+                        .fill(
+                            configuration.isOn ? activeColor : inactiveColor
+                        )
+                )
+                .foregroundColor(
+                    configuration.isOn ? activeTextColor : inactiveTextColor
+                )
+        }
     }
 
     // MARK: Internal
@@ -174,18 +180,22 @@ extension CapsuleToggleStyle {
 }
 
 #Preview {
-    Toggle(isOn: .constant(true)) {
-        Text("test")
-    }
-    .toggleStyle(CapsuleToggleStyle.accent)
+    ToggleTest()
+}
 
-    Toggle(isOn: .constant(false)) {
-        Text("test")
-    }
-    .toggleStyle(CapsuleToggleStyle.default)
+// MARK: - ToggleTest
 
-    Toggle(isOn: .constant(true)) {
-        Text("test")
+struct ToggleTest: View {
+    // MARK: Internal
+
+    var body: some View {
+        Toggle(isOn: $isOn) {
+            Text("test")
+        }
+        .toggleStyle(CapsuleToggleStyle.accent)
     }
-    .toggleStyle(CapsuleToggleStyle.destructive)
+
+    // MARK: Private
+
+    @State private var isOn = true
 }
