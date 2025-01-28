@@ -21,13 +21,11 @@ public struct CapsuleButtonStyle: ButtonStyle {
 
     public func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .padding(.horizontal, 8)
-            .padding(.vertical, 4)
+            .padding(.horizontal, 12)
+            .padding(.vertical, 6)
             .background(isSelected ? tagColor : Color(.systemGray6))
             .foregroundColor(textColor)
             .clipShape(Capsule())
-            .font(.subheadline)
-            .shadow(radius: 0.4)
     }
 
     // MARK: Internal
