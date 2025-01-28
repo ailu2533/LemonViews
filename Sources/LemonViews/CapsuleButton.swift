@@ -129,22 +129,22 @@ public struct CapsuleToggleStyle: ToggleStyle {
     // MARK: Public
 
     public func makeBody(configuration: Configuration) -> some View {
-        Button {
-            configuration.isOn.toggle()
-        } label: {
-            configuration.label
-                .padding(.horizontal, 12)
-                .padding(.vertical, 6)
-                .background(
-                    Capsule()
-                        .fill(
-                            configuration.isOn ? activeColor : inactiveColor
-                        )
-                )
-                .foregroundColor(
-                    configuration.isOn ? activeTextColor : inactiveTextColor
-                )
-        }
+        configuration.label
+            .padding(.horizontal, 12)
+            .padding(.vertical, 6)
+            .background(
+                Capsule()
+                    .fill(
+                        configuration.isOn ? activeColor : inactiveColor
+                    )
+            )
+            .foregroundColor(
+                configuration.isOn ? activeTextColor : inactiveTextColor
+            )
+            .contentShape(Capsule())
+            .onTapGesture {
+                configuration.isOn.toggle()
+            }
     }
 
     // MARK: Internal
