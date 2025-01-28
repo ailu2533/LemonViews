@@ -108,3 +108,69 @@ extension CapsuleButton where Content == Text {
         )
     }
 }
+
+// MARK: - CapsuleToggleStyle
+
+struct CapsuleToggleStyle: ToggleStyle {
+    // MARK: Internal
+
+    // MARK: Properties
+
+    var activeColor: Color = .blue
+    var inactiveColor: Color = Color(.systemGray5)
+    var activeTextColor: Color = .white
+    var inactiveTextColor: Color = .primary
+
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .padding(.horizontal, 12)
+            .padding(.vertical, 6)
+            .background(
+                Capsule()
+                    .fill(configuration.isOn ? activeColor : inactiveColor)
+            )
+            .foregroundColor(configuration.isOn ? activeTextColor : inactiveTextColor)
+            .font(.subheadline.weight(.medium))
+            .contentShape(Capsule())
+            .animation(animation, value: configuration.isOn)
+    }
+
+    // MARK: Private
+
+    // MARK: Animation
+
+    private let animation: Animation = .easeInOut(duration: 0.2)
+}
+
+// MARK: - Convenience Extensions
+
+extension CapsuleToggleStyle {
+    static let `default` = CapsuleToggleStyle()
+
+    static let accent = CapsuleToggleStyle(
+        activeColor: .accentColor,
+        inactiveColor: Color(.systemGray6)
+    )
+
+    static let destructive = CapsuleToggleStyle(
+        activeColor: .red,
+        inactiveColor: Color(.systemGray6)
+    )
+}
+
+#Preview {
+    Toggle(isOn: .constant(true)) {
+        Text("test")
+    }
+    .toggleStyle(CapsuleToggleStyle.accent)
+
+    Toggle(isOn: .constant(false)) {
+        Text("test")
+    }
+    .toggleStyle(CapsuleToggleStyle.default)
+
+    Toggle(isOn: .constant(true)) {
+        Text("test")
+    }
+    .toggleStyle(CapsuleToggleStyle.destructive)
+}
