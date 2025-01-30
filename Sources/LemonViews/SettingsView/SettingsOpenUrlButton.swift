@@ -22,17 +22,31 @@ public struct SettingsOpenURLButton: View {
 
     public var body: some View {
         HStack {
-            SettingIconView(icon: .system(icon: icon, foregroundColor: foregroundColor, backgroundColor: backgroundColor))
-
-            Button(title) {
+            Button {
                 if let url = URL(string: urlString) {
                     openURL(url)
                 }
-            }
-            .buttonStyle(PlainButtonStyle())
+            } label: {
+                HStack {
+                    SettingIconView(
+                        icon: .system(
+                            icon: icon,
+                            foregroundColor: foregroundColor,
+                            backgroundColor: backgroundColor
+                        )
+                    )
+                    Text(title)
 
-            Spacer()
-            SettingIconView(icon: .system(icon: "arrowshape.turn.up.right.fill", foregroundColor: .gray, backgroundColor: .clear))
+                    Spacer()
+                    SettingIconView(
+                        icon: .system(
+                            icon: "arrow.up.right",
+                            foregroundColor: .gray,
+                            backgroundColor: .clear
+                        )
+                    )
+                }
+            }
         }
     }
 
@@ -49,6 +63,12 @@ public struct SettingsOpenURLButton: View {
 
 #Preview {
     List {
-        SettingsOpenURLButton(title: "给我们好评", icon: "star", foregroundColor: .white, urlString: "itms-apps://itunes.apple.com/app/id6504145207?action=write-review")
+        SettingsOpenURLButton(
+            title: "给我们好评",
+            icon: "star.fill",
+            foregroundColor: .white,
+            backgroundColor: .pink,
+            urlString: "itms-apps://itunes.apple.com/app/id6504145207?action=write-review"
+        )
     }
 }
