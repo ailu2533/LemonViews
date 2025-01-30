@@ -5,6 +5,7 @@
 //  Created by ailu on 2024/8/10.
 //
 
+import SFSafeSymbols
 import SwiftUI
 
 // MARK: - NavigationIndicatorView
@@ -23,7 +24,7 @@ struct NavigationIndicatorView: View {
 public struct SettingsRowWithContentView<Content: View>: View {
     // MARK: Lifecycle
 
-    public init(icon: String, text: LocalizedStringKey, color: Color, action: @escaping () -> Void, content: @escaping () -> Content) {
+    public init(icon: SFSymbol, text: LocalizedStringKey, color: Color, action: @escaping () -> Void, content: @escaping () -> Content) {
         self.icon = icon
         self.text = text
         self.color = color
@@ -47,7 +48,7 @@ public struct SettingsRowWithContentView<Content: View>: View {
 
     // MARK: Internal
 
-    let icon: String
+    let icon: SFSymbol
     let text: LocalizedStringKey
     let color: Color
     let action: () -> Void
@@ -56,7 +57,7 @@ public struct SettingsRowWithContentView<Content: View>: View {
 
 #Preview {
     List {
-        SettingsRowWithContentView(icon: "cabinet", text: "test", color: .blue) {
+        SettingsRowWithContentView(icon: .cabinet, text: "test", color: .blue) {
         } content: {
             Text("hello")
         }

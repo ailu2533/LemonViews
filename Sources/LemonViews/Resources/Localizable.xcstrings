@@ -40,6 +40,9 @@
         }
       }
     },
+    "test" : {
+
+    },
     "TODO" : {
       "localizations" : {
         "en" : {

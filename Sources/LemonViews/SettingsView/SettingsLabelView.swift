@@ -5,13 +5,14 @@
 //  Created by ailu on 2024/8/10.
 //
 
+import SFSafeSymbols
 import SwiftUI
 
 public struct SettingsLabelView: View {
     // MARK: Lifecycle
 
     public init(
-        systemName: String,
+        systemName: SFSymbol,
         text: LocalizedStringKey,
         foregroundColor: Color = .white,
         backgroundColor: Color
@@ -41,12 +42,16 @@ public struct SettingsLabelView: View {
 
     // MARK: Internal
 
-    let systemName: String
+    let systemName: SFSymbol
     let text: LocalizedStringKey
     let foregroundColor: Color
     let backgroundColor: Color
 }
 
 #Preview {
-    SettingsLabelView(systemName: "tshirt.fill", text: "衣服", backgroundColor: .blue)
+    SettingsLabelView(
+        systemName: .tshirtFill,
+        text: "衣服",
+        backgroundColor: .blue
+    )
 }

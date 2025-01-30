@@ -5,12 +5,19 @@
 //  Created by Lu Ai on 2024/8/13.
 //
 
+import SFSafeSymbols
 import SwiftUI
 
 public struct SettingsOpenURLButton: View {
     // MARK: Lifecycle
 
-    public init(title: LocalizedStringKey, icon: String, foregroundColor: Color, backgroundColor: Color = .blue, urlString: String) {
+    public init(
+        title: LocalizedStringKey,
+        icon: SFSymbol,
+        foregroundColor: Color,
+        backgroundColor: Color = .blue,
+        urlString: String
+    ) {
         self.title = title
         self.icon = icon
         self.foregroundColor = foregroundColor
@@ -45,7 +52,7 @@ public struct SettingsOpenURLButton: View {
     // MARK: Private
 
     private let title: LocalizedStringKey
-    private let icon: String
+    private let icon: SFSymbol
     private let foregroundColor: Color
     private let backgroundColor: Color
     private let urlString: String
@@ -57,7 +64,7 @@ public struct SettingsOpenURLButton: View {
     List {
         SettingsOpenURLButton(
             title: "给我们好评",
-            icon: "star.fill",
+            icon: .starFill,
             foregroundColor: .white,
             backgroundColor: .pink,
             urlString: "itms-apps://itunes.apple.com/app/id6504145207?action=write-review"

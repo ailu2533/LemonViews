@@ -7,13 +7,14 @@
 
 import Foundation
 import SwiftUI
+import SFSafeSymbols
 
 public struct SettingToggle: View {
     // MARK: Lifecycle
 
     public init(
         isOn: Binding<Bool>,
-        icon: String,
+        icon: SFSymbol,
         foregroundColor: Color,
         backgroundColor: Color,
         title: LocalizedStringKey,
@@ -56,7 +57,7 @@ public struct SettingToggle: View {
 
     @Binding var isOn: Bool
 
-    let icon: String
+    let icon: SFSymbol
     let foregroundColor: Color
     let backgroundColor: Color
 

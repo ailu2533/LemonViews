@@ -5,12 +5,13 @@
 //  Created by Lu Ai on 2024/8/31.
 //
 
+import SFSafeSymbols
 import SwiftUI
 
 // MARK: - SettingIcon
 
 public enum SettingIcon {
-    case system(icon: String, foregroundColor: Color = .white, backgroundColor: Color)
+    case system(icon: SFSymbol, foregroundColor: Color = .white, backgroundColor: Color)
 
     /// Pass in a `foregroundColor` to render and recolor the image as a template.
     case image(name: String, inset: CGFloat, foregroundColor: Color?, backgroundColor: Color)
@@ -36,7 +37,8 @@ public struct SettingIconView: View {
     public var body: some View {
         switch icon {
         case let .system(icon, foregroundColor, backgroundColor):
-            Image(systemName: icon)
+
+            Image(systemSymbol: icon)
                 .foregroundColor(foregroundColor)
                 .font(.footnote)
                 .frame(width: 28, height: 28)

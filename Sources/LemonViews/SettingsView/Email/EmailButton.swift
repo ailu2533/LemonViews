@@ -9,11 +9,7 @@ import Foundation
 import SwiftUI
 
 public struct EmailButton: View {
-    @Environment(\.openURL) private var openURL
-    private let emailAddress: String
-    let title: LocalizedStringKey
-    let foregroundColor: Color
-    let backgroundColor: Color
+    // MARK: Lifecycle
 
     public init(title: LocalizedStringKey, emailAddress: String = "im.ailu@outlook.com", foregroundColor: Color, backgroundColor: Color) {
         self.title = title
@@ -22,6 +18,8 @@ public struct EmailButton: View {
         self.emailAddress = emailAddress
     }
 
+    // MARK: Public
+
     public var body: some View {
         Button(action: {
             let subject = "Support email from app user"
@@ -29,17 +27,28 @@ public struct EmailButton: View {
             email.send(openURL: openURL)
         }, label: {
             HStack {
-                SettingIconView(icon: .system(icon: "mail", foregroundColor: foregroundColor, backgroundColor: backgroundColor))
+                SettingIconView(icon: .system(icon: .mail, foregroundColor: foregroundColor, backgroundColor: backgroundColor))
 
                 Text(verbatim: emailAddress)
 
                 Spacer()
 
-                SettingIconView(icon: .system(icon: "arrowshape.turn.up.right.fill", foregroundColor: .gray, backgroundColor: .clear))
+                SettingIconView(icon: .system(icon: .arrowshapeTurnUpRightFill, foregroundColor: .gray, backgroundColor: .clear))
             }
         })
         .buttonStyle(PlainButtonStyle())
     }
+
+    // MARK: Internal
+
+    let title: LocalizedStringKey
+    let foregroundColor: Color
+    let backgroundColor: Color
+
+    // MARK: Private
+
+    @Environment(\.openURL) private var openURL
+    private let emailAddress: String
 }
 
 #Preview {

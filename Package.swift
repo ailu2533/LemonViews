@@ -14,7 +14,8 @@ let package = Package(
             targets: ["LemonViews"])
     ],
     dependencies: [
-        .package(url: "https://github.com/SwiftUIX/SwiftUIX", .upToNextMajor(from: "0.2.2"))
+        .package(url: "https://github.com/SwiftUIX/SwiftUIX", .upToNextMajor(from: "0.2.2")),
+        .package(url: "https://github.com/SFSafeSymbols/SFSafeSymbols.git", .upToNextMajor(from: "5.3.0")),
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
@@ -22,7 +23,8 @@ let package = Package(
         .target(
             name: "LemonViews",
             dependencies: [
-                .product(name: "SwiftUIX", package: "SwiftUIX")
+                .product(name: "SwiftUIX", package: "SwiftUIX"),
+                .product(name: "SFSafeSymbols", package: "SFSafeSymbols")
             ],
             resources: [
                 .process("Resources")

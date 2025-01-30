@@ -6,14 +6,20 @@
 //
 
 import SwiftUI
+import SFSafeSymbols
 
 public struct CheckBoxRow: View {
-    let systemName: String?
+    let systemName: SFSymbol?
     let title: String
     let isChecked: Bool
     let callback: () -> Void
 
-    public init(systemName: String? = nil, title: String, isChecked: Bool, callback: @escaping () -> Void) {
+    public init(
+        systemName: SFSymbol? = nil,
+        title: String,
+        isChecked: Bool,
+        callback: @escaping () -> Void
+    ) {
         self.title = title
         self.isChecked = isChecked
         self.callback = callback
