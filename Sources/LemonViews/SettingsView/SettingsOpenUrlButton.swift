@@ -36,17 +36,9 @@ public struct SettingsOpenURLButton: View {
                         )
                     )
                     Text(title)
-
-                    Spacer()
-                    SettingIconView(
-                        icon: .system(
-                            icon: "arrow.up.right",
-                            foregroundColor: .gray,
-                            backgroundColor: .clear
-                        )
-                    )
                 }
             }
+            .foregroundStyle(.primary)
         }
     }
 
