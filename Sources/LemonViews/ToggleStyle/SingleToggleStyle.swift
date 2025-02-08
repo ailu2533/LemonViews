@@ -1,6 +1,12 @@
 import SwiftUI
 
 public struct SingleToggleStyle: ToggleStyle {
+    // MARK: Lifecycle
+
+    public init() {}
+
+    // MARK: Public
+
     public func makeBody(configuration: Configuration) -> some View {
         Button {
             configuration.isOn.toggle()
