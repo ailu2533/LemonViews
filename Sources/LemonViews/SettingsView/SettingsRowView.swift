@@ -63,7 +63,12 @@ public struct SettingsRowView: View {
 public struct SettingsRowNoImageBorderView: View {
     // MARK: Lifecycle
 
-    public init(icon: String, text: LocalizedStringKey, color: Color, action: @escaping () -> Void) {
+    public init(
+        icon: SFSymbol,
+        text: LocalizedStringKey,
+        color: Color,
+        action: @escaping () -> Void
+    ) {
         self.icon = icon
         self.text = text
         self.color = color
@@ -75,7 +80,7 @@ public struct SettingsRowNoImageBorderView: View {
     public var body: some View {
         Button(action: action) {
             HStack {
-                FormIconView(systemName: icon, size: 16)
+                FormIconView(systemSymbol: icon, size: 16)
                 Text(text)
                 Spacer()
                 NavigationIndicatorView()
@@ -86,7 +91,7 @@ public struct SettingsRowNoImageBorderView: View {
 
     // MARK: Internal
 
-    let icon: String
+    let icon: SFSymbol
     let text: LocalizedStringKey
     let color: Color
     let action: () -> Void

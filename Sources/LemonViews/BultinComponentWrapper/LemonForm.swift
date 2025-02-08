@@ -5,15 +5,19 @@
 //  Created by Lu Ai on 2024/9/15.
 //
 
+import SFSafeSymbols
 import SwiftUI
 
+// MARK: - LemonForm
+
 public struct LemonForm<Content: View>: View {
-    @ViewBuilder
-    let content: () -> Content
+    // MARK: Lifecycle
 
     public init(@ViewBuilder content: @escaping () -> Content) {
         self.content = content
     }
+
+    // MARK: Public
 
     public var body: some View {
         Form {
@@ -22,6 +26,11 @@ public struct LemonForm<Content: View>: View {
         .scrollContentBackground(.hidden)
         .contentMargins(.vertical, 2)
     }
+
+    // MARK: Internal
+
+    @ViewBuilder
+    let content: () -> Content
 }
 
 #Preview {
@@ -30,21 +39,26 @@ public struct LemonForm<Content: View>: View {
     }
 }
 
-public struct FormTitleView: View {
-    let title: LocalizedStringKey
-    @Binding var text: String
-    let initialFocusState: Bool?
-    @FocusState private var isFocused
+// MARK: - FormTitleView
 
-    public init(title: LocalizedStringKey, text: Binding<String>, initialFocusState: Bool? = nil) {
+public struct FormTitleView: View {
+    // MARK: Lifecycle
+
+    public init(
+        title: LocalizedStringKey,
+        text: Binding<String>,
+        initialFocusState: Bool? = nil
+    ) {
         self.title = title
         _text = text
         self.initialFocusState = initialFocusState
     }
 
+    // MARK: Public
+
     public var body: some View {
         HStack {
-            FormIconView(systemName: "doc.plaintext.fill", size: 16)
+            FormIconView(systemSymbol: .docPlaintextFill, size: 16)
                 .padding(.leading, 16)
             TextField(title, text: $text)
                 .listRowInsets(EdgeInsets())
@@ -52,11 +66,9 @@ public struct FormTitleView: View {
                 .focused($isFocused)
         }
         .padding(.vertical, 8)
-//        .background(Color(.systemBackground))
         .clipShape(RoundedRectangle(cornerRadius: 12))
 
         .listRowInsets(EdgeInsets())
-//        .listRowBackground(Color.clear)
         .onAppearOnce {
             if let initialFocusState {
                 isFocused = initialFocusState
@@ -68,6 +80,16 @@ public struct FormTitleView: View {
             }
         }
     }
+
+    // MARK: Internal
+
+    let title: LocalizedStringKey
+    @Binding var text: String
+    let initialFocusState: Bool?
+
+    // MARK: Private
+
+    @FocusState private var isFocused
 }
 
 #Preview {
@@ -76,21 +98,28 @@ public struct FormTitleView: View {
     }
 }
 
-public struct FormIconView: View {
-    let systemName: String
-    var size: CGFloat = 28
+// MARK: - FormIconView
 
-    public init(systemName: String, size: CGFloat) {
-        self.systemName = systemName
+public struct FormIconView: View {
+    // MARK: Lifecycle
+
+    public init(systemSymbol: SFSymbol, size: CGFloat) {
+        self.systemSymbol = systemSymbol
         self.size = size
     }
 
+    // MARK: Public
+
     public var body: some View {
-        Image(systemName: systemName)
+        Image(systemSymbol: systemSymbol)
             .resizable()
             .renderingMode(.template)
-//            .foregroundColor(Color(.netureBlack))
             .aspectRatio(contentMode: .fit)
             .frame(width: size, height: size)
     }
+
+    // MARK: Internal
+
+    let systemSymbol: SFSymbol
+    var size: CGFloat = 28
 }

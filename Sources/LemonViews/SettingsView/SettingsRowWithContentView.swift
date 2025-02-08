@@ -22,22 +22,16 @@ struct NavigationIndicatorView: View {
 // MARK: - SettingsRowWithContentView
 
 public struct SettingsRowWithContentView<Content: View>: View {
-    // MARK: Lifecycle
-
-    public init(icon: SFSymbol, text: LocalizedStringKey, color: Color, action: @escaping () -> Void, content: @escaping () -> Content) {
-        self.icon = icon
-        self.text = text
-        self.color = color
-        self.action = action
-        self.content = content
-    }
-
     // MARK: Public
 
     public var body: some View {
         Button(action: action) {
             HStack {
-                SettingsLabelView(systemName: icon, text: text, backgroundColor: color)
+                SettingsLabelView(
+                    systemName: icon,
+                    text: text,
+                    backgroundColor: color
+                )
                 Spacer()
                 content()
                 NavigationIndicatorView()
@@ -52,7 +46,7 @@ public struct SettingsRowWithContentView<Content: View>: View {
     let text: LocalizedStringKey
     let color: Color
     let action: () -> Void
-    let content: () -> Content
+    @ViewBuilder var content: () -> Content
 }
 
 #Preview {
