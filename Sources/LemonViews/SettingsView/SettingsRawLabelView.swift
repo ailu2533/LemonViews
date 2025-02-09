@@ -1,19 +1,12 @@
-//
-//  SwiftUIView.swift
-//  LemonViews
-//
-//  Created by ailu on 2024/8/10.
-//
-
 import SFSafeSymbols
 import SwiftUI
 
-public struct SettingsLabelView: View {
+public struct SettingsRawLabelView: View {
     // MARK: Lifecycle
 
     public init(
         systemName: SFSymbol,
-        text: LocalizedStringKey,
+        text: String,
         foregroundColor: Color = .white,
         backgroundColor: Color
     ) {
@@ -43,17 +36,7 @@ public struct SettingsLabelView: View {
     // MARK: Internal
 
     let systemName: SFSymbol
-    let text: LocalizedStringKey
+    let text: String
     let foregroundColor: Color
     let backgroundColor: Color
-}
-
-#Preview {
-    Form {
-        SettingsLabelView(
-            systemName: .tshirtFill,
-            text: "衣服",
-            backgroundColor: .blue
-        )
-    }
 }
