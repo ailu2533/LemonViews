@@ -34,18 +34,14 @@ public struct SettingsOpenURLButton: View {
                     openURL(url)
                 }
             } label: {
-                HStack {
-                    SettingIconView(
-                        icon: .system(
-                            icon: icon,
-                            foregroundColor: foregroundColor,
-                            backgroundColor: backgroundColor
-                        )
-                    )
-                    Text(title)
-                }
+                SettingsLabelView(
+                    systemName: icon,
+                    text: title,
+                    foregroundColor: foregroundColor,
+                    backgroundColor: backgroundColor
+                )
             }
-            .foregroundStyle(.primary)
+            .tint(.primary)
         }
     }
 
@@ -57,7 +53,8 @@ public struct SettingsOpenURLButton: View {
     private let backgroundColor: Color
     private let urlString: String
 
-    @Environment(\.openURL) private var openURL
+    @Environment(\.openURL)
+    private var openURL
 }
 
 #Preview {
