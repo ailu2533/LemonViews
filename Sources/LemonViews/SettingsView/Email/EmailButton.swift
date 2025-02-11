@@ -11,7 +11,12 @@ import SwiftUI
 public struct EmailButton: View {
     // MARK: Lifecycle
 
-    public init(title: LocalizedStringKey, emailAddress: String = "im.ailu@outlook.com", foregroundColor: Color, backgroundColor: Color) {
+    public init(
+        title: LocalizedStringKey,
+        emailAddress: String = "im.ailu@outlook.com",
+        foregroundColor: Color,
+        backgroundColor: Color
+    ) {
         self.title = title
         self.foregroundColor = foregroundColor
         self.backgroundColor = backgroundColor
@@ -21,22 +26,22 @@ public struct EmailButton: View {
     // MARK: Public
 
     public var body: some View {
-        Button(action: {
-            let subject = "Support email from app user"
-            let email = SupportEmail(toAddress: emailAddress, subject: subject)
-            email.send(openURL: openURL)
-        }, label: {
-            HStack {
-                SettingIconView(icon: .system(icon: .mail, foregroundColor: foregroundColor, backgroundColor: backgroundColor))
-
-                Text(verbatim: emailAddress)
-
-                Spacer()
-
-                SettingIconView(icon: .system(icon: .arrowshapeTurnUpRightFill, foregroundColor: .gray, backgroundColor: .clear))
+        Button(
+            action: {
+                let subject = "Support email from app user"
+                let email = SupportEmail(toAddress: emailAddress, subject: subject)
+                email.send(openURL: openURL)
+            },
+            label: {
+                SettingsRawLabelView(
+                    systemName: .mail,
+                    text: emailAddress,
+                    foregroundColor: foregroundColor,
+                    backgroundColor: backgroundColor
+                )
             }
-        })
-        .buttonStyle(PlainButtonStyle())
+        )
+        .tint(.primary)
     }
 
     // MARK: Internal
@@ -47,10 +52,16 @@ public struct EmailButton: View {
 
     // MARK: Private
 
-    @Environment(\.openURL) private var openURL
+    @Environment(\.openURL)
+    private var openURL
     private let emailAddress: String
 }
 
 #Preview {
-    EmailButton(title: "邮箱", emailAddress: "example@example.com", foregroundColor: .white, backgroundColor: .blue)
+    EmailButton(
+        title: "邮箱",
+        emailAddress: "example@example.com",
+        foregroundColor: .white,
+        backgroundColor: .blue
+    )
 }
