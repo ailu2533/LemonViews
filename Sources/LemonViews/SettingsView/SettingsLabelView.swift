@@ -8,6 +8,8 @@
 import SFSafeSymbols
 import SwiftUI
 
+// MARK: - SettingsLabelView
+
 public struct SettingsLabelView: View {
     // MARK: Lifecycle
 
@@ -55,5 +57,43 @@ public struct SettingsLabelView: View {
             text: "衣服",
             backgroundColor: .blue
         )
+
+        Label {
+            Text("衣服")
+        } icon: {
+            Image(systemSymbol: .tshirtFill)
+        }
+        .labelStyle(SettingsLabelStyle())
     }
+}
+
+// MARK: - SettingsLabelStyle
+
+public struct SettingsLabelStyle: LabelStyle {
+    // MARK: Lifecycle
+
+    public init(foregroundColor: Color = .white, backgroundColor: Color = .blue) {
+        self.foregroundColor = foregroundColor
+        self.backgroundColor = backgroundColor
+    }
+
+    // MARK: Public
+
+    public func makeBody(configuration: Configuration) -> some View {
+        HStack {
+            configuration.icon
+                .foregroundColor(foregroundColor)
+                .font(.footnote)
+                .frame(width: 28, height: 28)
+                .background(backgroundColor)
+                .clipShape(RoundedRectangle(cornerRadius: 6, style: .continuous))
+
+            configuration.title
+        }
+    }
+
+    // MARK: Private
+
+    private var foregroundColor: Color
+    private var backgroundColor: Color
 }
