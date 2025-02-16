@@ -28,18 +28,17 @@ public struct SettingsLabelView: View {
     // MARK: Public
 
     public var body: some View {
-        HStack {
-            SettingIconView(
-                icon: .system(
-                    icon: systemName,
-                    foregroundColor: foregroundColor,
-                    backgroundColor: backgroundColor
-                )
-            )
-
+        Label {
             Text(text)
-                .padding(.leading, 5)
+        } icon: {
+            Image(systemSymbol: systemName)
         }
+        .labelStyle(
+            SettingsLabelStyle(
+                foregroundColor: foregroundColor,
+                backgroundColor: backgroundColor
+            )
+        )
     }
 
     // MARK: Internal
