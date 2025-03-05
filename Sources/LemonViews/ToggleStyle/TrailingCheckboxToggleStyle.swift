@@ -1,6 +1,13 @@
+//
+//  TrailingCheckboxToggleStyle.swift
+//  LemonViews
+//
+//  Created by Lu Ai on 2025/3/6.
+//
+
 import SwiftUI
 
-public struct SingleToggleStyle: ToggleStyle {
+public struct TrailingCheckboxToggleStyle: ToggleStyle {
     // MARK: Lifecycle
 
     public init() {}
@@ -12,10 +19,11 @@ public struct SingleToggleStyle: ToggleStyle {
             configuration.isOn.toggle()
         } label: {
             HStack {
-                Image(systemSymbol: configuration.isOn ? .checkmarkCircleFill : .circle)
-                    .fontWeight(.semibold)
                 configuration.label
                     .tint(.primary)
+                Spacer()
+                Image(systemSymbol: configuration.isOn ? .checkmarkSquareFill : .square)
+                    .fontWeight(.semibold)
             }
         }
     }

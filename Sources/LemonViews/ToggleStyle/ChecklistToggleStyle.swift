@@ -12,15 +12,11 @@ public struct ChecklistToggleStyle: ToggleStyle {
             configuration.isOn.toggle()
         } label: {
             HStack {
+                Image(systemSymbol: configuration.isOn ? .checkmarkSquareFill : .square)
+                    .fontWeight(.semibold)
                 configuration.label
                     .tint(.primary)
-
-                Spacer()
-                Image(systemSymbol: configuration.isOn ? .checkmarkSquareFill : .square)
-                    .imageScale(.large)
-                    .fontWeight(.semibold)
             }
         }
-        .buttonStyle(.borderless)
     }
 }
