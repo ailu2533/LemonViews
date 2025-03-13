@@ -21,8 +21,6 @@ public struct TrailingCheckboxToggleStyle: ToggleStyle {
             HStack {
                 configuration.label
                     .tint(.primary)
-                    .contentTransition(.symbolEffect(.replace)) // 图标切换动画
-                    .animation(.snappy(duration: 0.1), value: configuration.isOn) // 状态变化动画
 
                 Spacer()
                 Image(systemSymbol: configuration.isOn ? .checkmarkSquareFill : .square)
