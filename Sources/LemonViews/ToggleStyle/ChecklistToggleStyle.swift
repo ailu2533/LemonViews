@@ -21,6 +21,6 @@ public struct ChecklistToggleStyle: ToggleStyle {
                     .tint(.primary)
             }
         }
-        .sensoryFeedback(.selection, trigger: configuration.isOn)
+//        .sensoryFeedback(.selection, trigger: configuration.isOn)
     }
 }

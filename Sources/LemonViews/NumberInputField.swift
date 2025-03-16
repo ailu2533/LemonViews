@@ -38,37 +38,32 @@
 
             init(_ parent: NumberInputField) {
                 self.parent = parent
+                
+                // 配置 NumberFormatter
+                formatter.numberStyle = .decimal
+                formatter.maximumFractionDigits = 2
+                formatter.minimumFractionDigits = 0
+                formatter.groupingSeparator = ""  // 不使用千位分隔符
             }
 
             // MARK: Public
 
             public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-                // 处理删除操作
+                // 1. 处理删除操作
                 if string.isEmpty {
-                    let currentText = textField.text ?? ""
-                    guard let stringRange = Range(range, in: currentText) else { return false }
-                    let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
-
-                    if updatedText.isEmpty {
-                        self.parent.value = 0
-                    } else if let value = Double(updatedText) {
-                        self.parent.value = value
-                    }
                     return true
                 }
-
-                // 验证输入字符
-                let allowedCharacters = CharacterSet(charactersIn: "0123456789.")
-                guard allowedCharacters.isSuperset(of: CharacterSet(charactersIn: string)) else {
-                    return false
-                }
-
-                // 获取更新后的文本
+                
+                // 2. 获取当前文本和更新后的文本
                 let currentText = textField.text ?? ""
                 guard let stringRange = Range(range, in: currentText) else { return false }
                 let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
-
-                // 处理小数点
+                
+                // 3. 基本验证规则
+                // 最大长度限制（包括小数点）
+                if updatedText.count > 10 { return false }
+                
+                // 4. 小数点处理
                 if string == "." {
                     // 不允许多个小数点
                     if currentText.contains(".") { return false }
@@ -76,25 +71,67 @@
                     if currentText.isEmpty { return false }
                     return true
                 }
-
-                // 验证数值范围
-                if let value = Double(updatedText) {
-                    return value <= 999999
+                
+                // 5. 小数位数控制
+                if currentText.contains(".") {
+                    let components = updatedText.components(separatedBy: ".")
+                    if components.count > 1 && components[1].count > 2 {
+                        return false // 限制小数点后最多2位
+                    }
                 }
-
-                return false
+                
+                // 6. 数字验证
+                // 只允许输入数字
+                let allowedCharacters = CharacterSet(charactersIn: "0123456789.")
+                if !allowedCharacters.isSuperset(of: CharacterSet(charactersIn: string)) {
+                    return false
+                }
+                
+                // 7. 数值范围验证
+                if let value = Double(updatedText) {
+                    // 限制最大值
+                    if value > 999999 { return false }
+                }
+                
+                return true
             }
 
             public func textFieldDidEndEditing(_ textField: UITextField) {
-                if let text = textField.text, let value = Double(text) {
-                    self.parent.value = value
-                } else {
+                isUserInput = false
+                guard let text = textField.text, !text.isEmpty else {
                     self.parent.value = 0
+                    textField.text = ""
+                    return
+                }
+                
+                // 1. 清理输入文本，只保留数字和小数点
+                let cleaned = text.filter { "0123456789.".contains($0) }
+                
+                // 2. 尝试转换为数字
+                if let value = Double(cleaned) {
+                    // 3. 检查是否超过最大值
+                    if value > 999999 {
+                        self.parent.value = 999999
+                        if let formattedText = formatter.string(from: NSNumber(value: 999999)) {
+                            textField.text = formattedText
+                        }
+                    } else {
+                        // 4. 格式化数字
+                        if let formattedText = formatter.string(from: NSNumber(value: value)) {
+                            textField.text = formattedText
+                            self.parent.value = value
+                        }
+                    }
+                } else {
+                    // 5. 无效输入处理
+                    self.parent.value = 0
+                    textField.text = ""
                 }
             }
 
             // 新增: 文本框开始编辑时将光标移到最右边
             public func textFieldDidBeginEditing(_ textField: UITextField) {
+                isUserInput = true
                 DispatchQueue.main.async {
                     let newPosition = textField.endOfDocument
                     textField.selectedTextRange = textField.textRange(from: newPosition, to: newPosition)
@@ -102,18 +139,20 @@
             }
 
             public func textFieldDidChangeSelection(_ textField: UITextField) {
-                DispatchQueue.main.async {
-                    if let text = textField.text, !text.isEmpty, let value = Double(text) {
+                // 在输入过程中，只更新非空且有效的数值
+                if let text = textField.text, !text.isEmpty {
+                    let cleaned = text.filter { "0123456789.".contains($0) }
+                    if let value = Double(cleaned) {
                         self.parent.value = value
-                    } else {
-                        self.parent.value = 0
                     }
                 }
             }
 
             // MARK: Internal
 
+            private let formatter = NumberFormatter()
             var parent: NumberInputField
+            private var isUserInput = false
 
             @objc func doneButtonTapped() {
                 UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
@@ -152,9 +191,11 @@
         }
 
         public func updateUIView(_ uiView: UITextField, context: Context) {
-            let text = value == 0 ? "" : String(value)
-            if uiView.text != text {
-                uiView.text = text
+            if !context.coordinator.isUserInput {
+                let text = value == 0 ? "" : String(value)
+                if uiView.text != text {
+                    uiView.text = text
+                }
             }
         }
 
@@ -173,9 +214,3 @@
     }
 #endif
 
-#Preview {
-    Form {
-        NumberInputField(value: .constant(123), placeholder: "测试")
-
-    }
-}

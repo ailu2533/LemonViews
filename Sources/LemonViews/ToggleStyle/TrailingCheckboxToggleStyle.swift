@@ -27,6 +27,6 @@ public struct TrailingCheckboxToggleStyle: ToggleStyle {
                     .fontWeight(.semibold)
             }
         }
-        .sensoryFeedback(.selection, trigger: configuration.isOn)
+//        .sensoryFeedback(.selection, trigger: configuration.isOn)
     }
 }

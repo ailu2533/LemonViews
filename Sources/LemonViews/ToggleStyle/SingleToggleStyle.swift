@@ -19,6 +19,6 @@ public struct SingleToggleStyle: ToggleStyle {
                     .tint(.primary)
             }
         }
-        .sensoryFeedback(.selection, trigger: configuration.isOn)
+//        .sensoryFeedback(.selection, trigger: configuration.isOn)
     }
 }
