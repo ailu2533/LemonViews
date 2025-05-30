@@ -1,5 +1,5 @@
 //
-//  SettingsIconView.swift
+//  SettingIconView.swift
 //  LittleDecision
 //
 //  Created by Lu Ai on 2024/8/31.
@@ -37,7 +37,6 @@ public struct SettingIconView: View {
     public var body: some View {
         switch icon {
         case let .system(icon, foregroundColor, backgroundColor):
-
             Image(systemSymbol: icon)
                 .foregroundColor(foregroundColor)
                 .font(.footnote)

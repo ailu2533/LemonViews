@@ -5,7 +5,7 @@
 ////  Created by Lu Ai on 2024/11/21.
 ////
 //
-//#if canImport(UIKit)
+// #if canImport(UIKit)
 //    import SwiftUI
 //    import UIKit
 //
@@ -38,7 +38,7 @@
 //
 //            init(_ parent: NumberInputField) {
 //                self.parent = parent
-//                
+//
 //                // 配置 NumberFormatter
 //                formatter.numberStyle = .decimal
 //                formatter.maximumFractionDigits = 2
@@ -53,16 +53,16 @@
 //                if string.isEmpty {
 //                    return true
 //                }
-//                
+//
 //                // 2. 获取当前文本和更新后的文本
 //                let currentText = textField.text ?? ""
 //                guard let stringRange = Range(range, in: currentText) else { return false }
 //                let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
-//                
+//
 //                // 3. 基本验证规则
 //                // 最大长度限制（包括小数点）
 //                if updatedText.count > 10 { return false }
-//                
+//
 //                // 4. 小数点处理
 //                if string == "." {
 //                    // 不允许多个小数点
@@ -71,7 +71,7 @@
 //                    if currentText.isEmpty { return false }
 //                    return true
 //                }
-//                
+//
 //                // 5. 小数位数控制
 //                if currentText.contains(".") {
 //                    let components = updatedText.components(separatedBy: ".")
@@ -79,20 +79,20 @@
 //                        return false // 限制小数点后最多2位
 //                    }
 //                }
-//                
+//
 //                // 6. 数字验证
 //                // 只允许输入数字
 //                let allowedCharacters = CharacterSet(charactersIn: "0123456789.")
 //                if !allowedCharacters.isSuperset(of: CharacterSet(charactersIn: string)) {
 //                    return false
 //                }
-//                
+//
 //                // 7. 数值范围验证
 //                if let value = Double(updatedText) {
 //                    // 限制最大值
 //                    if value > 999999 { return false }
 //                }
-//                
+//
 //                return true
 //            }
 //
@@ -103,10 +103,10 @@
 //                    textField.text = ""
 //                    return
 //                }
-//                
+//
 //                // 1. 清理输入文本，只保留数字和小数点
 //                let cleaned = text.filter { "0123456789.".contains($0) }
-//                
+//
 //                // 2. 尝试转换为数字
 //                if let value = Double(cleaned) {
 //                    // 3. 检查是否超过最大值
@@ -212,5 +212,5 @@
 //        var backgroundColor: UIColor
 //        var verticalPadding: CGFloat
 //    }
-//#endif
+// #endif
 //

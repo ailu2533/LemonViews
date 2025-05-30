@@ -1,5 +1,5 @@
 //
-//  SwiftUIView.swift
+//  LemonForm.swift
 //
 //
 //  Created by Lu Ai on 2024/9/15.
@@ -67,7 +67,6 @@ public struct FormTitleView: View {
         }
         .padding(.vertical, 8)
         .clipShape(RoundedRectangle(cornerRadius: 12))
-
         .listRowInsets(EdgeInsets())
         .onAppearOnce {
             if let initialFocusState {

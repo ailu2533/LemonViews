@@ -1,5 +1,5 @@
 //
-//  SwiftUIView.swift
+//  SettingsOpenUrlButton.swift
 //
 //
 //  Created by Lu Ai on 2024/8/13.

@@ -1,5 +1,5 @@
 //
-//  EmailController.swift
+//  SupportEmail.swift
 //  LittleDecision
 //
 //  Created by Lu Ai on 2024/8/28.
@@ -11,7 +11,7 @@ import SwiftUI
 
 class EmailController: NSObject, MFMailComposeViewControllerDelegate {
     public static let shared = EmailController()
-    override private init() { }
+    override private init() {}
 
     func sendEmail(subject: String, body: String, to: String) {
         // Check if the device is able to send emails
@@ -28,7 +28,7 @@ class EmailController: NSObject, MFMailComposeViewControllerDelegate {
         EmailController.getRootViewController()?.present(mailComposer, animated: true, completion: nil)
     }
 
-    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+    func mailComposeController(_: MFMailComposeViewController, didFinishWith _: MFMailComposeResult, error _: Error?) {
         EmailController.getRootViewController()?.dismiss(animated: true, completion: nil)
     }
 

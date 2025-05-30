@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  EmailButton.swift
 //
 //
 //  Created by Lu Ai on 2024/8/31.

@@ -1,5 +1,5 @@
 //
-//  SwiftUIView.swift
+//  GeneralStatView.swift
 //  LemonViews
 //
 //  Created by ailu on 2024/8/10.
@@ -44,7 +44,7 @@ public struct GeneralRowView<Item: Identifiable, Content: View>: View {
         HStack {
             content(item)
             Spacer()
-            if let stats = stats {
+            if let stats {
                 StatsItemView(stats: stats)
             } else {
                 ProgressView()

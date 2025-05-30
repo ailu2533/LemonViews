@@ -1,5 +1,5 @@
 //
-//  SwiftUIView.swift
+//  CheckBoxRowWithContent.swift
 //  LemonViews
 //
 //  Created by ailu on 2024/8/10.
@@ -42,6 +42,5 @@ public struct CheckBoxRowWithContent<Content: View>: View {
 #Preview {
     CheckBoxRowWithContent(isChecked: true) {
         Text("test")
-    } callback: {
-    }
+    } callback: {}
 }

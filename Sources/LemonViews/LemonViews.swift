@@ -98,13 +98,13 @@ public struct DateRange: Identifiable, Sendable {
     public var description: LocalizedStringKey {
         switch unit {
         case .day:
-            return "最近1周"
+            "最近1周"
         case .month:
-            return duration == 1 ? "最近1个月" : "最近\(duration)个月"
+            duration == 1 ? "最近1个月" : "最近\(duration)个月"
         case .year:
-            return "最近1年"
+            "最近1年"
         default:
-            return ""
+            ""
         }
     }
 
@@ -146,10 +146,10 @@ public struct PriceRange: Identifiable, Sendable {
     public let max: Int?
 
     public var description: LocalizedStringKey {
-        if let max = max {
-            return "\(min)到\(max)"
+        if let max {
+            "\(min)到\(max)"
         } else {
-            return "\(min)以上"
+            "\(min)以上"
         }
     }
 }

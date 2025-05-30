@@ -1,5 +1,5 @@
 //
-//  SwiftUIView.swift
+//  SettingsRowView.swift
 //  LemonViews
 //
 //  Created by ailu on 2024/8/10.
@@ -49,11 +49,9 @@ public struct SettingsRowView: View {
 #Preview {
     NavigationStack {
         List {
-            SettingsRowView(icon: .cabinet, text: "衣橱", color: .yellow) {
-            }
+            SettingsRowView(icon: .cabinet, text: "衣橱", color: .yellow) {}
 
-            SettingsRowView(icon: .cabinet, text: "Tag Management", color: .blue) {
-            }
+            SettingsRowView(icon: .cabinet, text: "Tag Management", color: .blue) {}
         }
     }
 }

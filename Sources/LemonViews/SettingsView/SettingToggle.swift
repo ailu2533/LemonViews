@@ -1,13 +1,13 @@
 //
-//  File.swift
+//  SettingToggle.swift
 //
 //
 //  Created by Lu Ai on 2024/8/31.
 //
 
 import Foundation
-import SwiftUI
 import SFSafeSymbols
+import SwiftUI
 
 public struct SettingToggle: View {
     // MARK: Lifecycle

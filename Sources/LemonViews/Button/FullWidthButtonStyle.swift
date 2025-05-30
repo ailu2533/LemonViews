@@ -1,5 +1,5 @@
 //
-//  SwiftUIView.swift
+//  FullWidthButtonStyle.swift
 //
 //
 //  Created by Lu Ai on 2024/9/7.
@@ -20,7 +20,8 @@ public struct FullWidthButtonStyle: ButtonStyle {
                 cornerRadius: CGFloat = 12,
                 verticalPadding: CGFloat = 14,
                 pressedOpacity: Double = 0.8,
-                pressedSaturation: Double = 0.8) {
+                pressedSaturation: Double = 0.8)
+    {
         self.backgroundColor = backgroundColor
         self.foregroundColor = foregroundColor
         self.cornerRadius = cornerRadius
@@ -61,7 +62,7 @@ public struct FullWidthButtonStyle: ButtonStyle {
         Button(role: .destructive, action: {}, label: {
             Text("Button")
         })
-        .buttonStyle(FullWidthButtonStyle(backgroundColor:.orange))
+        .buttonStyle(FullWidthButtonStyle(backgroundColor: .orange))
         .padding(.horizontal, 16)
     }
 }

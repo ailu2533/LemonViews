@@ -8,7 +8,7 @@ public struct LemonEditButton: View {
         title1: LocalizedStringKey,
         title2: LocalizedStringKey
     ) {
-        self._editMode = editMode
+        _editMode = editMode
         self.title1 = title1
         self.title2 = title2
     }

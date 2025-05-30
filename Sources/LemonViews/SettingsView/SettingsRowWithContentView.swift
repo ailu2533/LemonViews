@@ -1,5 +1,5 @@
 //
-//  SwiftUIView.swift
+//  SettingsRowWithContentView.swift
 //  LemonViews
 //
 //  Created by ailu on 2024/8/10.
@@ -51,8 +51,7 @@ public struct SettingsRowWithContentView<Content: View>: View {
 
 #Preview {
     List {
-        SettingsRowWithContentView(icon: .cabinet, text: "test", color: .blue) {
-        } content: {
+        SettingsRowWithContentView(icon: .cabinet, text: "test", color: .blue) {} content: {
             Text("hello")
         }
     }

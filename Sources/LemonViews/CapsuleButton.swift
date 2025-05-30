@@ -1,5 +1,5 @@
 //
-//  SwiftUIView.swift
+//  CapsuleButton.swift
 //  LemonViews
 //
 //  Created by ailu on 2024/7/17.
@@ -77,9 +77,9 @@ public struct CapsuleButton<Content: View>: View {
     private let title: () -> Content // 使用 Text 视图来处理不同类型的输入
 }
 
-extension CapsuleButton where Content == Text {
+public extension CapsuleButton where Content == Text {
     // 字符串便利初始化器
-    public init(
+    init(
         title: String,
         isSelected: Bool,
         tagColor: Color,
@@ -94,7 +94,7 @@ extension CapsuleButton where Content == Text {
     }
 
     // LocalizedStringKey 便利初始化器
-    public init(
+    init(
         title: LocalizedStringKey,
         isSelected: Bool,
         tagColor: Color,
@@ -165,15 +165,15 @@ public struct CapsuleToggleStyle: ToggleStyle {
 
 // MARK: - Convenience Extensions
 
-extension CapsuleToggleStyle {
-    public static let `default` = CapsuleToggleStyle()
+public extension CapsuleToggleStyle {
+    static let `default` = CapsuleToggleStyle()
 
-    public static let accent = CapsuleToggleStyle(
+    static let accent = CapsuleToggleStyle(
         activeColor: .accentColor,
         inactiveColor: Color(.systemGray6)
     )
 
-    public static let destructive = CapsuleToggleStyle(
+    static let destructive = CapsuleToggleStyle(
         activeColor: .red,
         inactiveColor: Color(.systemGray6)
     )

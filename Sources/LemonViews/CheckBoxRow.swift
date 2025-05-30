@@ -1,12 +1,12 @@
 //
-//  SwiftUIView.swift
+//  CheckBoxRow.swift
 //  LemonViews
 //
 //  Created by ailu on 2024/8/10.
 //
 
-import SwiftUI
 import SFSafeSymbols
+import SwiftUI
 
 public struct CheckBoxRow: View {
     let systemName: SFSymbol?
@@ -51,10 +51,8 @@ public struct CheckBoxRow: View {
 
 #Preview {
     List {
-        CheckBoxRow(title: "test", isChecked: true) {
-        }
+        CheckBoxRow(title: "test", isChecked: true) {}
 
-        CheckBoxRow(title: "test", isChecked: false) {
-        }
+        CheckBoxRow(title: "test", isChecked: false) {}
     }
 }

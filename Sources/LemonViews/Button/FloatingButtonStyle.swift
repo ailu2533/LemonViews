@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  FloatingButtonStyle.swift
 //
 //
 //  Created by Lu Ai on 2024/9/16.
@@ -24,8 +24,7 @@ public struct FloatingButtonStyle: ButtonStyle {
         static let pressedOpacity: Double = 0.8
     }
 
-    public init() {
-    }
+    public init() {}
 
     public func makeBody(configuration: Configuration) -> some View {
         configuration.label
