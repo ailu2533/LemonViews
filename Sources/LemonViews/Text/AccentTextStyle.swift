@@ -32,8 +32,7 @@ struct AccentTextStyle: ViewModifier {
         content
             .padding(.horizontal, horizontalPadding)
             .padding(.vertical, verticalPadding)
-            .foregroundStyle(Color.systemBackground)
-            .background(Color.accentColor)
+            .background(Color.accentColor.tertiary)
             .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
     }
 }
