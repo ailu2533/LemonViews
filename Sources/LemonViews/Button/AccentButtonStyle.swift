@@ -30,7 +30,7 @@ public struct AccentButtonStyle: ButtonStyle {
         configuration.label
             .padding(.horizontal, horizontalPadding)
             .padding(.vertical, verticalPadding)
-            .foregroundStyle(Color.systemBackground)
+            .foregroundStyle(Color.white)
             .background(Color.accentColor)
             .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
             .opacity(configuration.isPressed ? pressedOpacity : 1.0)
