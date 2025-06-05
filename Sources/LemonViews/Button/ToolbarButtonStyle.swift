@@ -11,7 +11,7 @@ import SwiftUI
 public struct ToolbarButtonStyle: ButtonStyle {
     // MARK: Lifecycle
 
-    init(
+    public init(
         cornerRadius: CGFloat = 12,
         horizontalPadding: CGFloat = 10,
         verticalPadding: CGFloat = 4,
