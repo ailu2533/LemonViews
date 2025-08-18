@@ -90,7 +90,7 @@ public struct DateRange: Identifiable, Sendable {
         DateRange(duration: 1, unit: .month),
         DateRange(duration: 3, unit: .month),
         DateRange(duration: 6, unit: .month),
-        DateRange(duration: 1, unit: .year),
+        DateRange(duration: 1, unit: .year)
     ]
 
     public let id = UUID()
@@ -138,7 +138,7 @@ public struct PriceRange: Identifiable, Sendable {
         PriceRange(min: 200, max: 300),
         PriceRange(min: 300, max: 500),
         PriceRange(min: 500, max: 1000),
-        PriceRange(min: 1000, max: nil),
+        PriceRange(min: 1000, max: nil)
     ]
 
     public let id = UUID()

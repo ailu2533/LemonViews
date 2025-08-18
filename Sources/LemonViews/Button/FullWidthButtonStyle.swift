@@ -20,8 +20,7 @@ public struct FullWidthButtonStyle: ButtonStyle {
                 cornerRadius: CGFloat = 12,
                 verticalPadding: CGFloat = 14,
                 pressedOpacity: Double = 0.8,
-                pressedSaturation: Double = 0.8)
-    {
+                pressedSaturation: Double = 0.8) {
         self.backgroundColor = backgroundColor
         self.foregroundColor = foregroundColor
         self.cornerRadius = cornerRadius
