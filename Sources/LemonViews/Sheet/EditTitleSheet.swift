@@ -1,4 +1,5 @@
 import SwiftUI
+import os
 
 public struct EditTitleSheet: View {
     // MARK: Lifecycle
@@ -24,11 +25,18 @@ public struct EditTitleSheet: View {
     public var body: some View {
         NavigationStack {
             Form {
-                FormTitleView(
-                    title: "Title",
-                    text: $title,
-                    initialFocusState: true
-                )
+                Section {
+                    FormTitleView(
+                        title: "Title",
+                        text: $title,
+                        initialFocusState: true
+                    )
+                } footer: {
+                    if let errorMessage {
+                        Label(errorMessage, systemImage: "exclamationmark.circle")
+                            .foregroundStyle(.red)
+                    }
+                }
             }
             .navigationTitle(navigationTitle)
             .navigationBarTitleDisplayMode(.inline)
@@ -40,9 +48,17 @@ public struct EditTitleSheet: View {
                 SaveButton(
                     disabled: isSaveDisabled,
                     onSave: {
+                        errorMessage = nil
                         try await updateAction(title.trimmingCharacters(in: .whitespacesAndNewlines))
+                    },
+                    onError: { error in
+                        errorMessage = error.localizedDescription
+                        logger.error("保存标题失败: \(error.localizedDescription)")
                     }
                 )
+            }
+            .onChange(of: title) {
+                errorMessage = nil
             }
         }
     }
@@ -52,8 +68,10 @@ public struct EditTitleSheet: View {
     private let navigationTitle: LocalizedStringKey
     private let updateAction: (String) async throws -> Void
     private let originalTitle: String
+    private let logger = Logger(subsystem: "LemonViews", category: "EditTitleSheet")
     
     @State private var title: String
+    @State private var errorMessage: String?
     @Environment(\.dismiss) private var dismiss
     
     private var isSaveDisabled: Bool {
