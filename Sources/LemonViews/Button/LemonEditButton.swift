@@ -24,7 +24,7 @@ public struct LemonEditButton: View {
             Text(editMode.isEditing ? title1 : title2)
                 .padding(.vertical, 6)
                 .padding(.horizontal, 12)
-                .background(editMode.isEditing ? .accentColor : .clear)
+                .background(editMode.isEditing ? Color(.accent) : .clear)
                 .clipShape(Capsule())
                 .foregroundStyle(
                     editMode.isEditing ? Color(.systemBackground) : Color.accentColor
@@ -44,4 +44,25 @@ public struct LemonEditButton: View {
     LemonEditButton(editMode: .constant(.active), title1: "Done", title2: "排序")
 
     LemonEditButton(editMode: .constant(.inactive), title1: "Done", title2: "排序")
+}
+
+@available(iOS 13.0, tvOS 13.0, *)
+@available(macOS, unavailable)
+@available(watchOS, unavailable)
+public extension EditMode {
+    mutating func toggle() {
+        switch self {
+        case .inactive:
+            self = .active
+
+        case .transient:
+            self = .inactive
+
+        case .active:
+            self = .inactive
+
+        @unknown default:
+            self = .inactive
+        }
+    }
 }
