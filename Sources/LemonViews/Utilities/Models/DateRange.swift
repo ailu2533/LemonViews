@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 // MARK: - DateRange
 
@@ -24,7 +25,7 @@ public struct DateRange: Identifiable, Sendable {
         DateRange(duration: 1, unit: .month),
         DateRange(duration: 3, unit: .month),
         DateRange(duration: 6, unit: .month),
-        DateRange(duration: 1, unit: .year)
+        DateRange(duration: 1, unit: .year),
     ]
 
     public let id = UUID()
@@ -52,4 +53,3 @@ public struct DateRange: Identifiable, Sendable {
     let duration: Int
     let unit: Calendar.Component
 }
-
