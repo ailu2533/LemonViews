@@ -35,8 +35,8 @@ struct MultiplePhotoPickerViewModifier: ViewModifier {
     }
 }
 
-extension View {
-    public func multiplePhotoPicker(
+public extension View {
+    func multiplePhotoPicker(
         isPresented: Binding<Bool>,
         onSelect: @escaping ([PhotosPickerItem]) -> Void
     ) -> some View {

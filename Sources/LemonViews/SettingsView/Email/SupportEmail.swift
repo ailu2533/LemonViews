@@ -10,7 +10,7 @@ import MessageUI
 import SwiftUI
 
 class EmailController: NSObject, MFMailComposeViewControllerDelegate {
-    public static let shared = EmailController()
+    static let shared = EmailController()
     override private init() {}
 
     func sendEmail(subject: String, body: String, to: String) {

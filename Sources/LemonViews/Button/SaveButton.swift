@@ -4,12 +4,12 @@
 //
 //  Created by Lu Ai on 2025/10/14.
 //
-import SwiftUI
 import os
+import SwiftUI
 
 public struct SaveButton: ToolbarContent {
     // MARK: Lifecycle
-    
+
     /// 创建一个保存按钮
     /// - Parameters:
     ///   - disabled: 是否禁用按钮
@@ -35,24 +35,24 @@ public struct SaveButton: ToolbarContent {
             Button {
                 Task {
                     guard saveState == .idle else { return }
-                    
+
                     saveState = .saving
-                    
+
                     do {
                         try await onSave()
-                        
+
                         if dismissAfterSave {
                             dismiss()
                         }
                     } catch {
                         // 保存失败，调用错误回调或记录错误
-                        if let onError  {
+                        if let onError {
                             onError(error)
                         } else {
                             logger.error("保存失败: \(error.localizedDescription)")
                         }
                     }
-                    
+
                     saveState = .idle
                 }
             } label: {
@@ -69,12 +69,12 @@ public struct SaveButton: ToolbarContent {
     private let dismissAfterSave: Bool
     private let onSave: () async throws -> Void
     private let onError: ((Error) -> Void)?
-    
+
     private let logger = Logger(subsystem: "LemonViews", category: "SaveButton")
-    
+
     @Environment(\.dismiss)
     private var dismiss
-    
+
     @State private var saveState: SaveState = .idle
 }
 
@@ -83,7 +83,7 @@ public struct SaveButton: ToolbarContent {
 public enum SaveState {
     case idle
     case saving
-    
+
     var text: LocalizedStringKey {
         switch self {
         case .idle:

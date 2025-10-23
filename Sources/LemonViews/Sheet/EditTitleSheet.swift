@@ -1,9 +1,9 @@
-import SwiftUI
 import os
+import SwiftUI
 
 public struct EditTitleSheet: View {
     // MARK: Lifecycle
-    
+
     /// 创建标题编辑视图
     /// - Parameters:
     ///   - navigationTitle: 导航栏标题
@@ -16,7 +16,7 @@ public struct EditTitleSheet: View {
     ) {
         self.navigationTitle = navigationTitle
         self.updateAction = updateAction
-        self.originalTitle = title
+        originalTitle = title
         _title = State(initialValue: title)
     }
 
@@ -69,14 +69,14 @@ public struct EditTitleSheet: View {
     private let updateAction: (String) async throws -> Void
     private let originalTitle: String
     private let logger = Logger(subsystem: "LemonViews", category: "EditTitleSheet")
-    
+
     @State private var title: String
     @State private var errorMessage: String?
     @Environment(\.dismiss) private var dismiss
-    
+
     private var isSaveDisabled: Bool {
         let trimmedTitle = title.trimmingCharacters(in: .whitespacesAndNewlines)
-        
+
         // 标题为空或未改变
         return trimmedTitle.isEmpty || trimmedTitle == originalTitle
     }

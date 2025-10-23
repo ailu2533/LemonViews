@@ -29,8 +29,8 @@ struct SinglePhotoPickerViewModifier: ViewModifier {
     }
 }
 
-extension View {
-    public func singlePhotoPicker(
+public extension View {
+    func singlePhotoPicker(
         isPresented: Binding<Bool>,
         onSelect: @MainActor @escaping (PhotosPickerItem) async -> Void
     ) -> some View {

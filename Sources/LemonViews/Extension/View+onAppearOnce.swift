@@ -7,8 +7,8 @@
 import SwiftUI
 
 @MainActor
-extension View {
-    public func onAppearOnce(perform action: @escaping () -> Void) -> some View {
+public extension View {
+    func onAppearOnce(perform action: @escaping () -> Void) -> some View {
         withInlineState(initialValue: false) { $didAppear in
             self.onAppear {
                 guard !didAppear else {
@@ -24,9 +24,9 @@ extension View {
 }
 
 @MainActor
-public func withInlineState<Value, Content: View>(
+public func withInlineState<Value>(
     initialValue: Value,
-    @ViewBuilder content: @escaping (Binding<Value>) -> Content
+    @ViewBuilder content: @escaping (Binding<Value>) -> some View
 ) -> some View {
     WithInlineState(initialValue: initialValue, content: content)
 }

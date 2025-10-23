@@ -15,8 +15,8 @@ let package = Package(
         )
     ],
     dependencies: [
-//        .package(url: "https://github.com/SwiftUIX/SwiftUIX", .upToNextMajor(from: "0.2.2")),
-        .package(url: "https://github.com/SFSafeSymbols/SFSafeSymbols.git", exact: "6.2.0"),
+        //        .package(url: "https://github.com/SwiftUIX/SwiftUIX", .upToNextMajor(from: "0.2.2")),
+        .package(url: "https://github.com/SFSafeSymbols/SFSafeSymbols.git", exact: "6.2.0")
 //        .package(url: "https://github.com/siteline/swiftui-introspect.git", .upToNextMajor(from: "1.3.0"))
     ],
     targets: [
@@ -25,8 +25,8 @@ let package = Package(
         .target(
             name: "LemonViews",
             dependencies: [
-//                .product(name: "SwiftUIX", package: "SwiftUIX"),
-                .product(name: "SFSafeSymbols", package: "SFSafeSymbols"),
+                //                .product(name: "SwiftUIX", package: "SwiftUIX"),
+                .product(name: "SFSafeSymbols", package: "SFSafeSymbols")
 //                .product(name: "SwiftUIIntrospect", package: "swiftui-introspect")
             ],
             resources: [
