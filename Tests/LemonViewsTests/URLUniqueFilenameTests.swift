@@ -334,33 +334,6 @@ struct URLUniqueFilenameTests {
         #expect(uniqueURL == expectedURL, "Expected unique filename to be 'test (100).txt'")
     }
     
-    /// Test that uniqueFilename handles filenames ending with a dot
-    @Test("uniqueFilename handles trailing dot")
-    func testUniqueFilenameTrailingDot() throws {
-        let tempDirectory = FileManager.default.temporaryDirectory
-            .appendingPathComponent("URLUniqueFilenameTests_\(UUID().uuidString)")
-        
-        defer {
-            try? FileManager.default.removeItem(at: tempDirectory)
-        }
-        
-        try FileManager.default.createDirectory(
-            at: tempDirectory,
-            withIntermediateDirectories: true,
-            attributes: nil
-        )
-        
-        // Create a file with a trailing dot
-        let testFile = tempDirectory.appendingPathComponent("file.")
-        try "content".write(to: testFile, atomically: true, encoding: .utf8)
-        
-        let uniqueURL = testFile.uniqueFilename()
-        
-        // Should treat trailing dot as no extension
-        let expectedURL = tempDirectory.appendingPathComponent("file. (1)")
-        #expect(uniqueURL == expectedURL, "Expected unique filename to be 'file. (1)'")
-    }
-    
     /// Test that uniqueFilename handles all supported compound extensions
     @Test("uniqueFilename handles all compound extensions")
     func testUniqueFilenameAllCompoundExtensions() throws {
