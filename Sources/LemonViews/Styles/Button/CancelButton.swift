@@ -14,7 +14,7 @@ public struct CancelButton: View {
         Button {
             dismiss()
         } label: {
-            Text("Cancel")
+            Text("Cancel", bundle: .module)
         }
     }
 

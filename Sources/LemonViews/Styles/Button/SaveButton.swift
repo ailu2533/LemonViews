@@ -56,7 +56,7 @@ public struct SaveButton: ToolbarContent {
                     saveState = .idle
                 }
             } label: {
-                Text(saveState.text)
+                Text(saveState.text, bundle: .module)
             }
             .buttonStyle(.borderedProminent)
             .disabled(disabled || saveState == .saving)
