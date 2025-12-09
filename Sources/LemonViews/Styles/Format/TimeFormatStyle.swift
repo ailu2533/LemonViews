@@ -81,3 +81,4 @@ public extension Double {
         style.format(self)
     }
 }
+
